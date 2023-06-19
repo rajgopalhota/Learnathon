@@ -1,0 +1,111 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.home-klu-card {
+  user-select: none;
+  max-width: 500px;
+  margin: 5rem auto;
+  border: 1px solid #ffffff22;
+  background-color: #282c3443;
+  background: linear-gradient(0deg, #282c34b1 0%, rgba(17, 0, 32, 0.5) 100%);
+  box-shadow: 0 7px 20px 5px #00000088;
+  border-radius: 0.7rem;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  overflow: hidden;
+  transition: 0.5s all;
+}
+
+.home-klu-card h2 {
+  color: #b0c7f7;
+}
+.home-klu-card ins {
+  text-decoration: none;
+}
+.home-klu-card .home-klu-card-main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+}
+.home-klu-card .home-klu-card-main .home-klu-card-img {
+  border-radius: 0.5rem;
+  max-width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+.home-klu-card .home-klu-card-main .home-klu-card-description {
+  margin: 0.5rem 0;
+  color: #f5f2ff;
+}
+.home-klu-card .home-klu-card-main .home-klu-card-extras {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.home-klu-card .home-klu-card-main .home-klu-card-extras .home-klu-card-price {
+  display: flex;
+  align-items: center;
+  color: #ee83e5;
+  font-weight: 700;
+}
+.home-klu-card
+  .home-klu-card-main
+  .home-klu-card-extras
+  .home-klu-card-price
+  ins {
+  margin-left: -0.3rem;
+  margin-right: 0.5rem;
+}
+.home-klu-card
+  .home-klu-card-main
+  .home-klu-card-extras
+  .home-klu-card-duration {
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  margin-right: 0.2rem;
+}
+.home-klu-card
+  .home-klu-card-main
+  .home-klu-card-extras
+  .home-klu-card-duration
+  ins {
+  margin: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.home-klu-card ::before {
+  position: fixed;
+  content: "";
+  box-shadow: 0 0 100px 40px #ffffff08;
+  top: -10%;
+  left: -100%;
+  transform: rotate(-45deg);
+  height: 60rem;
+  transition: 0.7s all;
+}
+.home-klu-card:hover {
+  border: 1px solid #ffffff44;
+  box-shadow: 0 7px 50px 10px #000000aa;
+  transform: scale(1.015);
+  filter: brightness(1.3);
+}
+.home-klu-card:hover ::before {
+  filter: brightness(0.5);
+  top: -100%;
+  left: 200%;
+}
+
+
+.carousel-inner img {
+  margin: auto;
+}
+.carousel-inner{
+  border-radius: 16px;
+}
+.carousel-control{
+  color: black;
+}
