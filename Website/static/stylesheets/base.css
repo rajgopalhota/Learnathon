@@ -29,15 +29,34 @@ body {
   background: url(/static/images/whitebg.jpg) no-repeat center center fixed;
   background-size: cover;
 }
-.mainhead{
-  text-align: center;
-  font-size: 63px;
-  letter-spacing: 3px;
-  color: rgb(18, 18, 18);
-  text-transform: uppercase;
-  font-weight: bolder;
-  text-shadow: 0 0 14pxrgb(139, 136, 136);
+
+header {
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(to top, #09203fe0 0%, #480f8ee2 100%);
+  color: #fff;
+  height: 70px;
+  border-radius: 0 0 12px 12px;
+  border-bottom: 1px solid white;
+  padding: 0 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 12px black;
+  z-index: 999;
 }
+header img {
+  height: 40px;
+  margin-right: auto;
+}
+header h1 {
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+header span {
+  margin-left: auto;
+}
+
+
 ul {
   list-style: none;
 }
@@ -54,6 +73,7 @@ a {
   position: fixed;
   inset: 0;
   margin: auto 0;
+  z-index: 999;
 }
 .homenavlist {
   position: relative;
