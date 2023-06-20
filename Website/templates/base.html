@@ -22,27 +22,27 @@
     <h1 class="mainhead">Summer term Learnathon</h1>
     <homenav class="homenav">
       <ul class="homenavlist">
-        <a href="#" class="homenavlink active-link">
+        <a href="/" class="homenavlink active-link">
           <i class="fa-solid fa-house-user" style="color: #ffffff"></i>
           <span class="homenavname">Home</span>
         </a>
 
-        <a href="#" class="homenavlink">
-          <i class="fa-solid fa-file-circle-check" style="color: #ffffff;"></i>
+        <a href="/marksheets" class="homenavlink">
+          <i class="fa-solid fa-file-circle-check" style="color: #ffffff"></i>
           <span class="homenavname">Marksheet</span>
         </a>
 
-        <a href="#" class="homenavlink">
+        <a href="/timetable" class="homenavlink">
           <i class="fa-solid fa-stopwatch" style="color: #ffffff"></i>
           <span class="homenavname">Timetable</span>
         </a>
 
-        <a href="#" class="homenavlink">
+        <a href="/announcements" class="homenavlink">
           <i class="fa-solid fa-bullhorn" style="color: #ffffff"></i>
           <span class="homenavname">Announcements</span>
         </a>
 
-        <a href="#" class="homenavlink">
+        <a href="/reviews" class="homenavlink">
           <i class="fa-solid fa-book" style="color: #ffffff"></i>
           <span class="homenavname">Reviews</span>
         </a>
@@ -110,13 +110,14 @@
               <a href="#" class="login__forgot">Forgot Password?</a>
             </div>
 
-            <button type="submit" class="tooltip-btn-hover color-1">Login</button>
+            <button type="submit" class="tooltip-btn-hover color-1">
+              Login
+            </button>
           </form>
         </div>
       </div>
     </div>
-
-    {% block body %} {% endblock body %}
+    <div class="comp">{% block body %} {% endblock body %}</div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
