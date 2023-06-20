@@ -2,13 +2,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
 /*=============== VARIABLES CSS ===============*/
 :root {
-  /*========== Colors ==========*/
-  --first-color: hsl(248, 74%, 58%);
-  --black-color: hsl(248, 24%, 10%);
-  --white-color: #fff;
-  --body-color: hsl(248, 100%, 99%);
-  /*========== Font and typography ==========*/
-  --body-font: "Poppins", sans-serif;
   --small-font-size: .813rem;
 }
 @media screen and (min-width: 1024px) {
@@ -30,11 +23,13 @@
   opacity: 0.4;
 }
 body {
-  font-family: var(--body-font);
+  font-family: "Poppins", sans-serif;
   background: url(/static/images/whitebg.jpg) no-repeat center center fixed;
   background-size: cover;
 }
-
+input, textarea{
+  border: none;
+}
 header {
   display: flex;
   align-items: center;
@@ -102,7 +97,7 @@ a {
 }
 .homenavlink i {
   font-size: 1.65rem;
-  color: var(--white-color);
+  color: #fff;
   transition: color 0.4s;
 }
 .homenavlink:hover .homenavname {
@@ -113,8 +108,8 @@ a {
   position: absolute;
   top: 0;
   transform: translateX(56px);
-  background-color: var(--black-color);
-  color: var(--white-color);
+  background-color: hsl(248, 24%, 10%);
+  color: #fff;
   font-size: var(--small-font-size);
   font-weight: 500;
   padding: 6px 16px;
