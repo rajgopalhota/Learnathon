@@ -5,8 +5,8 @@
 }
 .home-klu-card {
   user-select: none;
-  max-width: 500px;
-  margin: 5rem auto;
+  max-width: 700px;
+  margin: 1.7rem auto;
   border: 1px solid #ffffff22;
   background-color: #282c3443;
   background: linear-gradient(0deg, #282c34b1 0%, rgba(17, 0, 32, 0.5) 100%);
@@ -19,7 +19,7 @@
 }
 
 .home-klu-card h2 {
-  color: #b0c7f7;
+  color: #7bff7d;
 }
 .home-klu-card ins {
   text-decoration: none;
@@ -48,7 +48,7 @@
 .home-klu-card .home-klu-card-main .home-klu-card-extras .home-klu-card-price {
   display: flex;
   align-items: center;
-  color: #ee83e5;
+  color: #ff64f2;
   font-weight: 700;
 }
 .home-klu-card

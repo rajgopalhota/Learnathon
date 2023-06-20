@@ -1,6 +1,32 @@
 {% extends 'base.html' %} {% block title %} Home {% endblock title %} 
 {% block body %}
-
-<h1>Marksheets tab</h1>
-
+<div class="marksheets">
+  <h1>Marksheets tab</h1>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Review</th>
+          <th scope="col">University ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Marks</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        <tr>
+          <th scope="row">1</th>
+          <td>2100032351</td>
+          <td>Raja</td>
+          <td>46</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>2100032331</td>
+          <td>XYZ</td>
+          <td>50</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 {% endblock body %}

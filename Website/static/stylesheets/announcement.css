@@ -9,6 +9,11 @@
     border: 2px solid rgb(60, 60, 60);
     box-shadow: 0 0 16px black;
 }
+.card:hover{
+    cursor: pointer;
+    transition: all ease-in 0.1s;
+    transform: scale(1.025);
+}
 .card-text{
     text-align: justify;
 }

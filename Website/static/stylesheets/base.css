@@ -36,7 +36,7 @@ header {
   background-image: linear-gradient(to top, #09203fe0 0%, #480f8ee2 100%);
   color: #fff;
   height: 70px;
-  border-radius: 0 0 12px 12px;
+  border-radius: 0 0 22px 22px;
   border-bottom: 1px solid white;
   padding: 0 20px;
   backdrop-filter: blur(12px);
@@ -44,7 +44,7 @@ header {
   z-index: 999;
 }
 header img {
-  height: 40px;
+  height: 60px;
   margin-right: auto;
 }
 header h1 {

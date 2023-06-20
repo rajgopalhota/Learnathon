@@ -1,0 +1,12 @@
+.marksheets{
+    text-align: center;
+    justify-content: center;
+    max-width: 90%;
+    margin-left: 5%;
+}
+.marksheets table{
+    border: 2px solid rgba(7, 0, 14, 0.88);
+}
+.marksheets thead{
+    background: bisque;
+}
