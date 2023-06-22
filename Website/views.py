@@ -16,3 +16,9 @@ def timetable(request):
 
 def marksheets(request):
     return render(request, 'components/marksheets.html')
+
+def postmarks(req):
+    return render(req, 'components/postmarks.html')
+
+def postattendance(req):
+    return render(req, 'components/postattendance.html')

@@ -7,6 +7,8 @@ urlpatterns = [
     path('timetable', views.timetable, name='timetable'),
     path('announcements', views.announcements, name='announcements'),
     path('reviews', views.reviews, name='reviews'),
+    path('postmarks', views.postmarks, name='postmarks'),
+    path('postattendance', views.postattendance, name='postattendance'),
     
 ]
 

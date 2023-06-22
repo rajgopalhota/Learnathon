@@ -72,7 +72,7 @@ a {
   height: max-content;
   position: fixed;
   inset: 0;
-  margin: auto 0;
+  margin: auto 0 0 0;
   z-index: 999;
 }
 .homenavlist {
