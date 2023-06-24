@@ -147,3 +147,11 @@ form .review-form-row .textarea {
     width: 40% !important;
   }
 }
+
+
+@media (max-width:600px){
+  .review-container {
+    max-width: 90%;
+    margin-top: 20%;
+  }
+}

@@ -31,6 +31,7 @@ input, textarea{
   border: none;
 }
 header {
+  min-width: 100%;
   display: flex;
   align-items: center;
   background-image: linear-gradient(to top, #09203fe0 0%, #480f8ee2 100%);
@@ -38,9 +39,11 @@ header {
   height: 70px;
   border-radius: 0 0 22px 22px;
   border-bottom: 1px solid white;
+  grid-area: s;
   padding: 0 20px;
   backdrop-filter: blur(12px);
   box-shadow: 0 8px 12px black;
+  overflow: hidden;
   z-index: 999;
 }
 header img {
@@ -65,14 +68,33 @@ a {
   text-decoration: none;
 }
 
-
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr 3fr;
+  grid-template-areas: 
+    "header  header"
+    "sidebar content"
+    "footer  footer";
+}
+@media (max-width: 500px) {
+  .wrapper {
+    grid-template-columns: 4fr;
+    grid-template-areas:
+      "header"
+      "content"
+      "sidebar"
+      "footer";
+  }
+}
 /*=============== SIDEBAR ===============*/
 .homenav {
-  width: 62px;
+  width: 72px;
   height: max-content;
+  grid-area: sidebar;
   position: fixed;
   inset: 0;
-  margin: auto 0 0 0;
+  margin: auto 0;
   z-index: 999;
 }
 .homenavlist {
@@ -96,7 +118,7 @@ a {
   transition: background 0.4s;
 }
 .homenavlink i {
-  font-size: 1.65rem;
+  font-size: 1.25rem;
   color: #fff;
   transition: color 0.4s;
 }
@@ -343,4 +365,57 @@ img {
 .comp{
   margin-left: 30px;
   margin-right: auto;
+}
+
+@media (max-width:600px){
+  header {
+    font-size: 12px;
+    height: 60px;
+  }
+  header img {
+    height: 20px;
+    margin-right: auto;
+  }
+  header h1 {
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 1.03rem;
+  }
+  header span {
+    margin-left: auto;
+  }
+  .homenav {
+    max-width: 42px;
+    height: max-content;
+    position: fixed;
+    inset: 0;
+    margin: auto 0;
+    z-index: 999;
+  }
+  .homenavlist {
+    position: relative;
+    background-color: rgba(0, 15, 62, 0.655);
+    padding-block: 60px;
+    border-radius: 0 66px 66px 0;
+    display: grid;
+    justify-content: center;
+    row-gap: 2rem;
+    box-shadow: 0 0 16px rgb(77, 77, 77);
+    border-right: 3px solid rgb(255, 145, 0);
+    backdrop-filter: blur(22px);
+    padding: 28px;
+  }
+  .homenavlink {
+    position: relative;
+    display: inline-flex;
+    padding: 4px;
+    border-radius: 50%;
+    transition: background 0.4s;
+  }
+  .homenavlink i {
+    font-size: 1.25rem;
+    color: #fff;
+    transition: color 0.4s;
+  }
 }

@@ -4,6 +4,7 @@
   margin: 0;
 }
 .home-klu-card {
+  grid-area: content;
   user-select: none;
   max-width: 700px;
   margin: 1.7rem auto;
@@ -108,4 +109,11 @@
 }
 .carousel-control{
   color: black;
+}
+
+@media (max-width:600px){
+  .home-klu-card {
+    max-width: 90%;
+  }
+
 }
