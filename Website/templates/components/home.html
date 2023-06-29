@@ -1,27 +1,26 @@
 {% extends 'base.html' %} {% block title %} Home {% endblock title %} 
 {% block body %}
-
-<div class="home-klu-card">
-  <div class="home-klu-card-main">
-    <img
-      class="home-klu-card-tokenImage"
-      src="/static/images/klu.jpg"
-      alt="home-klu-card"
-    />
-    <h2>Welcome to KL University Learnathon</h2>
-    <p class="home-klu-card-description">
-      We hope that you will take full advantage of this opportunity and make the
-      most of your time here. We are confident that you will find this event
-      both informative and enjoyable.
-    </p>
-    <div class="home-klu-card-extras">
-      <div class="home-klu-card-price">
-        <p>◘ &nbsp;Summer Term</p>
+<div class="home">
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      <div class="container homecont">
+        <h1>Welcome to</h1>
+        <h1><span class="kltitle">KL</span> <span class="hacktitle">Hackathon!</span></h1>
+        <h1 id="element"></h1>
       </div>
-      <div class="home-klu-card-duration">
-        <p>◷ &nbsp;30/06/2023</p>
-      </div>
+    </div>
+    <div class="col">
+      <img class="floating" src="./static/images/code.svg" />
+      <!-- <img class="floating" src="./static/images/homepic.png" /> -->
     </div>
   </div>
 </div>
+</div>
+<script>
+    var typed = new Typed('#element', {
+      strings: ['Code Quicker', 'Stand First!', 'Enhnced UI', 'Powerful Backend', 'Get rewards'],
+      typeSpeed: 50,
+    });
+</script>
 {% endblock body %}

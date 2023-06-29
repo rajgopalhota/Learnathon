@@ -10,17 +10,22 @@ input, textarea{
 }
 body {
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(to top, #09203f 0%, #537895 100%) no-repeat center
-    center fixed;
+  /* background: linear-gradient(to top, #031b3d 0%, #280345 100%) no-repeat center
+    center fixed; */
+    background: url(/static/images/bg.jpg) no-repeat center center fixed;
+    background-size: cover;
 }
 .navbar {
   z-index: 999;
-  border-bottom: 2px solid rgb(103, 102, 102);
-  box-shadow: 0 0 12px rgb(70, 70, 70);
+  border-bottom: 2px solid rgb(120, 120, 120);
+  box-shadow: 0 0 12px rgb(144, 144, 144);
   position: fixed;
   min-width: 100%;
   top: 0;
   left: 0;
+}
+.navbar-dark, .navbar[data-bs-theme=dark] {
+  border-radius: 0 0 30px 30px;
 }
 .nav-link {
   font-weight: bolder;
@@ -45,7 +50,7 @@ body {
 }
 .bg-dark {
   background-color: transparent;
-  background-image: linear-gradient(to right, #35213e 0%, rgb(15, 22, 50) 100%);
+  background-image: linear-gradient(to right, #1a0439 0%, rgb(33, 3, 45) 100%);
 }
 
 /*=============== LOGIN ===============*/
@@ -274,8 +279,7 @@ img {
 }
 
 .comp {
-  margin-left: 30px;
-  margin-right: auto;
+  margin-top: 5%;
 }
 
 @media (max-width: 600px) {

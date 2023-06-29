@@ -117,3 +117,40 @@
   }
 
 }
+/* new......... */
+.container{
+  margin-left: 0;
+  margin-right: auto;
+  margin: auto;
+}
+.homecont{
+  padding: 8%;
+}
+.kltitle{
+  color: rgb(255, 52, 52);
+}
+.hacktitle{
+  color: rgb(255, 209, 255);
+}
+.container h1{
+  font-size: 66px;
+  color: white;
+  font-weight: 900;
+}
+#element{
+  font-size: 54px;
+}
+.floating { 
+  animation-name: floating;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  margin-left: 30px;
+  margin-top: 5px;
+}
+
+@keyframes floating {
+  0% { transform: translate(0,  0px); }
+  50%  { transform: translate(0, 15px); }
+  100%   { transform: translate(0, -0px); }   
+}
