@@ -3,11 +3,13 @@
     margin-left: 8%;
 }
 .card{
+    animation: floaterx 1s;
     margin-top: 15px;
     background-color: rgba(0, 0, 0, 0.117);
     backdrop-filter: blur(12px);
     border: 2px solid rgb(60, 60, 60);
     box-shadow: 0 0 16px black;
+    color: white;
 }
 .card:hover{
     cursor: pointer;

@@ -1,10 +1,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
 
+
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
+
+
+/* Animations */
+@keyframes floatery {
+  0% {
+    transform: translateY(100%);
+    transition: ease 5s;
+  }
+}
+@keyframes floaterx {
+  0% {
+    transform: translateX(100%);
+    transition: ease 5s;
+  }
+}
+@keyframes floaterxr {
+  0% {
+    transform: translateX(-100%);
+    transition: ease 5s;
+  }
+}
+
 input, textarea{
   border: none;
 }
@@ -14,6 +38,9 @@ body {
     center fixed; */
     background: url(/static/images/bg.jpg) no-repeat center center fixed;
     background-size: cover;
+}
+body::-webkit-scrollbar{
+  display: none;
 }
 .navbar {
   z-index: 999;
@@ -279,7 +306,7 @@ img {
 }
 
 .comp {
-  margin-top: 5%;
+  margin-top: 8%;
 }
 
 @media (max-width: 600px) {
