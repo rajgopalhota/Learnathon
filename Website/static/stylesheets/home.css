@@ -120,15 +120,14 @@
 
 }
 /* new......... */
-.container{
-  margin: auto;
-  animation: floaterxr 1s;
-}
 .homecont{
   padding: 8%;
+  margin: auto;
+  animation: floaterxr 1s;
+  
 }
-.kltitle{
-  color: rgb(255, 52, 52);
+.kltitle img{
+  transform: scale(1.5);
 }
 .hacktitle{
   color: rgb(255, 209, 255);

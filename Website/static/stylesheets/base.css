@@ -70,8 +70,8 @@ body::-webkit-scrollbar{
 }
 .navbar button {
   margin: 0;
-  margin-right: 2%;
-  padding: 12px 34px;
+  margin-right: 5%;
+  padding: 16px;
   border-radius: 42px;
   box-shadow: 0 0 8px rgb(150, 150, 150);
 }

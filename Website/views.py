@@ -1,5 +1,7 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+
+from django.shortcuts import render, redirect
+# from django.contrib.auth.models import User, auth
+# from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 def home(request):
@@ -22,3 +24,20 @@ def postmarks(req):
 
 def postattendance(req):
     return render(req, 'components/postattendance.html')
+
+
+# def LoginView(request):
+#     if request.method == 'POST':
+#         username = request.POST['mail']
+#         password = request.POST['passwd']
+#         user = auth.authenticate(username=username, password=password)
+#         print(username, password)
+#         if user is not None:
+#             if User.is_staff:
+#                 login(request, user)
+#                 return redirect('/admin')
+#             login(request, user)
+#             return redirect('/')
+#         else:
+#             context = {'Error': 'INVALID CREDENTIALS', 'Sign': ' X'}
+#             return render(request, 'Rentals/login.html', context)
