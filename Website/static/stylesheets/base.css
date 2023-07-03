@@ -46,10 +46,7 @@ body::-webkit-scrollbar{
   z-index: 999;
   border-bottom: 2px solid rgb(120, 120, 120);
   box-shadow: 0 0 12px rgb(144, 144, 144);
-  position: fixed;
   min-width: 100%;
-  top: 0;
-  left: 0;
 }
 .navbar-dark, .navbar[data-bs-theme=dark] {
   border-radius: 0 0 30px 30px;
@@ -305,9 +302,6 @@ img {
   box-shadow: 0 4px 15px 0 rgba(229, 66, 10, 0.75);
 }
 
-.comp {
-  margin-top: 8%;
-}
 
 @media (max-width: 600px) {
   header {

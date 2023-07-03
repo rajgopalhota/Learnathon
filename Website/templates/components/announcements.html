@@ -25,137 +25,18 @@
 </div>
 <div class="container text-center">
   <div class="row row-cols-auto">
+    {% for announcement in announce %}
     <div class="col">
       <div class="card" style="width: 18rem">
-        <img src="https://th.bing.com/th/id/R.2211a28e0a154c4b34ff8acfb945dba1?rik=f6FJSXRuHWCodg&riu=http%3a%2f%2fwww.crestinformatics.com%2fimages%2fservices%2fweb-development.jpg&ehk=qRzbfj3J35zz1o8pAsP4UK0q2VUIIms6wuF%2fdHpsN4A%3d&risl=&pid=ImgRaw&r=0" class="card-img-top" alt="..." />
+        <img src="{{announcement.source}}" class="card-img-top" alt="..." />
         <div class="card-body">
           <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            {{announcement.notice}}
           </p>
         </div>
       </div>
     </div>
-    <div class="col">
-      <div class="card" style="width: 18rem">
-        <img src="https://th.bing.com/th/id/OIP.X0_RGix3ic9US3q8G8ZXcgHaE8?pid=ImgDet&rs=1" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card" style="width: 18rem">
-        <img src="https://th.bing.com/th/id/OIP.txE7QDH_CcK9kkpZdEzTagHaFE?pid=ImgDet&rs=1" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card" style="width: 18rem">
-        <img src="https://th.bing.com/th/id/R.2211a28e0a154c4b34ff8acfb945dba1?rik=f6FJSXRuHWCodg&riu=http%3a%2f%2fwww.crestinformatics.com%2fimages%2fservices%2fweb-development.jpg&ehk=qRzbfj3J35zz1o8pAsP4UK0q2VUIIms6wuF%2fdHpsN4A%3d&risl=&pid=ImgRaw&r=0" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card" style="width: 18rem">
-        <img src="https://th.bing.com/th/id/R.2211a28e0a154c4b34ff8acfb945dba1?rik=f6FJSXRuHWCodg&riu=http%3a%2f%2fwww.crestinformatics.com%2fimages%2fservices%2fweb-development.jpg&ehk=qRzbfj3J35zz1o8pAsP4UK0q2VUIIms6wuF%2fdHpsN4A%3d&risl=&pid=ImgRaw&r=0" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card" style="width: 18rem">
-        <img src="https://th.bing.com/th/id/OIP.X0_RGix3ic9US3q8G8ZXcgHaE8?pid=ImgDet&rs=1" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card" style="width: 18rem">
-        <img src="https://th.bing.com/th/id/OIP.txE7QDH_CcK9kkpZdEzTagHaFE?pid=ImgDet&rs=1" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card" style="width: 18rem">
-        <img src="https://th.bing.com/th/id/R.2211a28e0a154c4b34ff8acfb945dba1?rik=f6FJSXRuHWCodg&riu=http%3a%2f%2fwww.crestinformatics.com%2fimages%2fservices%2fweb-development.jpg&ehk=qRzbfj3J35zz1o8pAsP4UK0q2VUIIms6wuF%2fdHpsN4A%3d&risl=&pid=ImgRaw&r=0" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card" style="width: 18rem">
-        <img src="https://th.bing.com/th/id/R.2211a28e0a154c4b34ff8acfb945dba1?rik=f6FJSXRuHWCodg&riu=http%3a%2f%2fwww.crestinformatics.com%2fimages%2fservices%2fweb-development.jpg&ehk=qRzbfj3J35zz1o8pAsP4UK0q2VUIIms6wuF%2fdHpsN4A%3d&risl=&pid=ImgRaw&r=0" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card" style="width: 18rem">
-        <img src="https://th.bing.com/th/id/OIP.X0_RGix3ic9US3q8G8ZXcgHaE8?pid=ImgDet&rs=1" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card" style="width: 18rem">
-        <img src="https://th.bing.com/th/id/OIP.txE7QDH_CcK9kkpZdEzTagHaFE?pid=ImgDet&rs=1" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card" style="width: 18rem">
-        <img src="https://th.bing.com/th/id/R.2211a28e0a154c4b34ff8acfb945dba1?rik=f6FJSXRuHWCodg&riu=http%3a%2f%2fwww.crestinformatics.com%2fimages%2fservices%2fweb-development.jpg&ehk=qRzbfj3J35zz1o8pAsP4UK0q2VUIIms6wuF%2fdHpsN4A%3d&risl=&pid=ImgRaw&r=0" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
+    {% endfor %}
     </div>
   </div>
 </div>

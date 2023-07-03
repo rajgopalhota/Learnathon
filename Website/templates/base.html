@@ -92,6 +92,21 @@
       </div>
     </nav>
 
+    {% for message in messages %}
+      <div
+        class="alert alert-{{message.tags}} mb-0 alert-dismissible fade show"
+        role="alert"
+        id="popupmsg"
+      >
+        <strong>Message: </strong> {{message}}
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+    {% endfor %}
     <div
       class="modal fade"
       id="loginModal"

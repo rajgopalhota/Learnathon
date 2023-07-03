@@ -5,34 +5,36 @@
     <div class="review-text">
        Support Form
     </div>
-    <form action="#">
+
+    <form action="" method="post">
+      {% csrf_token %}
        <div class="review-form-row">
           <div class="review-input-data">
-             <input type="text" required>
+             <input type="text" name="teamno" required>
              <div class="review-underline"></div>
              <label for="">Team number</label>
           </div>
           <div class="review-input-data">
-             <input type="text" required>
+             <input type="text" name="idno" required>
              <div class="review-underline"></div>
              <label for="">ID number</label>
           </div>
        </div>
        <div class="review-form-row">
           <div class="review-input-data">
-             <input type="text" required>
+             <input type="text" name="query" required>
              <div class="review-underline"></div>
              <label for="">Query</label>
           </div>
           <div class="review-input-data">
-             <input type="text" required>
+             <input type="text" name="roomno" required>
              <div class="review-underline"></div>
              <label for="">Room number</label>
           </div>
        </div>
        <div class="review-form-row">
        <div class="review-input-data textarea">
-          <textarea rows="8" cols="80" required></textarea>
+          <textarea rows="8" cols="80" name="msg" required></textarea>
           <br />
           <div class="review-underline"></div>
           <label for="">Write your message</label>
