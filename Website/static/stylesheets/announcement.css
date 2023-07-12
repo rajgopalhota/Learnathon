@@ -2,19 +2,24 @@
     margin-top: 5%;
     margin-left: 8%;
 }
-.card{
+.announcecard{
     animation: floaterx 1s;
     margin-top: 15px;
-    background-color: rgba(0, 0, 0, 0.117);
-    backdrop-filter: blur(12px);
+    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
     border: 2px solid rgb(60, 60, 60);
     box-shadow: 0 0 16px black;
-    color: white;
+    color: rgb(0, 0, 0);
+    margin-bottom: 15%;
+    min-height: 320px;
+    text-align: justify;
+    letter-spacing: 1px;
+    font-weight: 300;
 }
-.card:hover{
+.announcecard:hover{
     cursor: pointer;
     transition: all ease-in 0.1s;
-    transform: scale(1.025);
+    filter: brightness(1.04);
+    transform: scale(1.015);
 }
 .card-text{
     text-align: justify;
