@@ -116,7 +116,7 @@
     >
       <div class="modal-dialog">
         <div class="modal-content">
-          <form action="" class="login__form">
+          <form action="login" class="login__form" method="post">
             {% csrf_token %}
             <h1 class="login__title">Learnathon portal</h1>
 
@@ -125,12 +125,13 @@
                 <i class="fa-solid fa-circle-user fa-flip"></i>
                 <div class="login__box-input">
                   <input
-                    type="email"
+                    type="text"
                     required
                     class="login__input"
                     placeholder=" "
+                    name="uname"
                   />
-                  <label for="" class="login__label">Email</label>
+                  <label for="" class="login__label">Enter ID</label>
                 </div>
               </div>
 
@@ -143,6 +144,7 @@
                     class="login__input"
                     id="login-pass"
                     placeholder=" "
+                    name="pass"
                   />
                   <label for="" class="login__label">Password</label>
                   <i class="ri-eye-off-line login__eye" id="login-eye"></i>

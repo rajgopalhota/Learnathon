@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <form action="{% url 'post_attendence' room_no=room.room_no session_no=session.session_no %}" method="post">
+            {% csrf_token %}
+            <tr>
+                <th>ID</th>
+                <th>Attendance</th>
+            </tr>
+            
+            {% for student in students %}
+            <tr>
+                <td>{{student.id}}</td>
+                <td>
+                    <input type="checkbox" name="{{student.id}}" value="true" checked>
+                </td>
+            </tr>
+            {% endfor %}
+            
+            <button type="submit">Post Attendance</button>
+        </form>
+    </table>
+    
+</body>
+</html>
