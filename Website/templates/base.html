@@ -49,6 +49,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-1 mb-lg-0">
+            {% if user.is_superuser %}
+              <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="admin"><i class="fa-solid fa-screwdriver-wrench fa-fade" style="color: #ffffff;"></i> Admin</a>
+              </li>
+            {% endif %}
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/"><i class="fa-solid fa-house-user" style="color: #ffffff"></i> Home</a>
             </li>
@@ -64,6 +69,7 @@
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/reviews"><i class="fa-solid fa-book" style="color: #ffffff"></i> HelpDesk</a>
             </li>
+            {% if user.is_staff %}
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -79,6 +85,7 @@
                 <li><a class="dropdown-item" href="/postmarks"><i class="fa-regular fa-calendar-check" style="color: #ffffff;"></i> Post marks</a></li>
               </ul>
             </li>
+            {% endif %}
           </ul>
 
           <a

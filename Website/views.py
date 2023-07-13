@@ -49,6 +49,9 @@ def signin(request):
         user = authenticate(username=username, password=pass1)
         print(user)
         if user is not None:
+            if user.is_staff == True:
+                login(request, user)
+                return redirect('/admin')
             login(request, user)
             msg = "Welcome " + username
             messages.success(request, msg)
