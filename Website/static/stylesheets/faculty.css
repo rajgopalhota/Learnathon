@@ -6,7 +6,7 @@
     min-width: 80%;
     display: inline-block;
     font-size: 26px;
-    background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
+    background-image: linear-gradient(to right, #243949ae 0%, #517fa4b5 100%);
     color: white;
     padding: 38px;
     letter-spacing: 2px;
@@ -15,7 +15,7 @@
     border: 2px solid white;
     box-shadow: 0 0 12px black;
     text-transform: uppercase;
-    margin-top: 10%;
+    margin-top: 3%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -47,4 +47,7 @@
 .roomsdisplay button{
     width: 50%;
     margin-top: 5%;
+}
+.roomsdisplay img{
+    margin: auto;
 }

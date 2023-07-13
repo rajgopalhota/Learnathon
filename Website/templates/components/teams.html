@@ -7,11 +7,14 @@
       method="post"
     >
       {% csrf_token %}
+      <center>
+        <img class="floating" src="./static/images/studentico.svg" width="250" />
+      </center>
       <table>
         <tbody>
           <tr>
             <td>
-              <label for="team">Choose a team</label>
+              <label for="team"><i class="fa-solid fa-people-group fa-flip" style="color: #ffffff;"></i> Choose a team</label>
             </td>
             <td>
               <select name="team" id="team">
