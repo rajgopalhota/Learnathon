@@ -1,34 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        /* CSS styles */
-        select {
-            width: 200px; /* Adjust the width as needed */
-            padding: 5px;
-            font-size: 16px;
-        }
-
-        option {
-            font-size: 14px; /* Adjust the font size as needed */
-        }
-    </style>
-</head>
-<body>
-    <form action="{% url 'handle_team' session_no=session.session_no room_no=room.room_no %}" method="post">
-        {% csrf_token %}
-        <label for="team">Choose a team</label>
-        <br>
-        <select name="team" id="team">
-            {% for team in teams %}
-                <option value="{{ team.team_name }}">{{ team.team_name }}</option>
-            {% endfor %}
-        </select>
-        <br>
-        <button type="submit">proceed</button>
+{% extends 'base.html' %} {% block title %} Teams {% endblock title %}
+{% block body %}
+<div class="mainroomplace">
+  <div class="roomsdisplay">
+    <form
+      action="{% url 'handle_team' session_no=session.session_no room_no=room.room_no %}"
+      method="post"
+    >
+      {% csrf_token %}
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <label for="team">Choose a team</label>
+            </td>
+            <td>
+              <select name="team" id="team">
+                <option value="none">Select One</option>
+                {% for team in teams %}
+                <option value="{{ team.team_name }}">
+                  {{ team.team_name }}
+                </option>
+                {% endfor %}
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button type="reset" class="tooltip-btn-hover color-2">
+                RESET
+              </button>
+            </td>
+            <td>
+              <button type="submit" class="tooltip-btn-hover color-1">
+                PROCEED
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </form>
-</body>
-</html>
+  </div>
+</div>
+{% endblock body %}

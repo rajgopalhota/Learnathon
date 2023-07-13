@@ -305,6 +305,16 @@ img {
   );
   box-shadow: 0 4px 15px 0 rgba(229, 66, 10, 0.75);
 }
+.tooltip-btn-hover.color-2 {
+  background-image: linear-gradient(
+    to right,
+    #ae1eda,
+    #db3b0a,
+    #150c7b,
+    #9d0581
+  );
+  box-shadow: 0 4px 15px 0 rgba(112, 10, 229, 0.75);
+}
 
 
 @media (max-width: 600px) {

@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block title %} Attendance {% endblock title %} 
+{% block body %}
+<table>
+  <form
+    action="{% url 'post_attendence' room_no=room.room_no session_no=session.session_no %}"
+    method="post"
+  >
+    {% csrf_token %}
+    <tr>
+      <th>ID</th>
+      <th>Attendance</th>
+    </tr>
+
+    {% for student in students %}
+    <tr>
+      <td>{{student.id}}</td>
+      <td>
+        <input type="checkbox" name="{{student.id}}" value="true" checked />
+      </td>
+    </tr>
+    {% endfor %}
+
+    <button type="submit">Post Attendance</button>
+  </form>
+</table>
+{% endblock body %}

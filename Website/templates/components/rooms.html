@@ -1,27 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-    <form action="{% url 'handle_review_room' %}" method="post">
-        {% csrf_token %}
-        <label for="room">Choose a Room</label>
-        <select name="room" id="room">
-            {% for room_obj in rooms %}
-                <option value="{{ room_obj.room_no }}">{{ room_obj.room_no }}</option>
-            {% endfor %}
-        </select>
-        <label for="session">Choose a Session</label>
-        <select name="session" id="session">
-            {% for session_obj in sessions %}
-                <option value="{{ session_obj.session_no }}">{{ session_obj.session_no }}</option>
-            {% endfor %}
-        </select>
-        <button type="submit">proceed</button>
-    </form>
-</body>
-</html>
+{% extends 'base.html' %} {% block title %} Rooms {% endblock title %}
+{% block body %}
+<div class="mainroomplace">
+      <div class="roomsdisplay">
+        <form action="{% url 'handle_review_room' %}" method="post">
+          {% csrf_token %}
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <label for="room">Choose Room</label>
+                </td>
+                <td>
+                  <select name="room" id="room">
+                    <option value="none">Select One</option>
+                    {% for room_obj in rooms %}
+                    <option value="{{ room_obj.room_no }}">
+                      {{ room_obj.room_no }}
+                    </option>
+                    {% endfor %}
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="session">Choose Session</label>
+                </td>
+                <td>
+                  <select name="session" id="session">
+                    <option value="none">Select One</option>
+                    {% for session_obj in sessions %}
+                    <option value="{{ session_obj.session_no }}">
+                      {{ session_obj.session_no }}
+                    </option>
+                    {% endfor %}
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <button type="reset" class="tooltip-btn-hover color-2">
+                    RESET
+                  </button>
+                </td>
+                <td>
+                  <button type="submit" class="tooltip-btn-hover color-1">
+                    PROCEED
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+      </div>
+    </div>
+  {% endblock body %}

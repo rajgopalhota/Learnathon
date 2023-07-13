@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="./static/stylesheets/base.css" />
     <link rel="stylesheet" href="./static/stylesheets/home.css" />
     <link rel="stylesheet" href="./static/stylesheets/announcement.css" />
+    <link rel="stylesheet" href="./static/stylesheets/faculty.css" />
     <link rel="stylesheet" href="./static/stylesheets/review.css" />
     <link rel="stylesheet" href="./static/stylesheets/marksheets.css" />
     <link rel="stylesheet" href="./static/stylesheets/backgroundani.css" />
@@ -74,7 +75,7 @@
               <i class="fa-solid fa-chalkboard-user" style="color: #ffffff;"></i> Faculty
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/postattendance"><i class="fa-solid fa-clipboard-user" style="color: #ffffff;"></i> Post attendance</a></li>
+                <li><a class="dropdown-item" href="/room_display"><i class="fa-solid fa-clipboard-user" style="color: #ffffff;"></i> Post attendance</a></li>
                 <li><a class="dropdown-item" href="/postmarks"><i class="fa-regular fa-calendar-check" style="color: #ffffff;"></i> Post marks</a></li>
               </ul>
             </li>
@@ -86,7 +87,13 @@
           data-bs-toggle="modal"
           data-bs-target="#loginModal"
         >
-        <button class="d-flex btn btn-danger"><i class="fa-solid fa-lock fa-flip"></i></button>
+        {% if user.is_authenticated %}
+          <a href="/logout" title="Logout">
+            <button class="d-flex btn btn-success"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i></button>
+          </a>
+        {% else %}
+          <button class="d-flex btn btn-danger"><i class="fa-solid fa-lock fa-flip"></i></button>
+        {% endif %}
         </a>
         </div>
       </div>

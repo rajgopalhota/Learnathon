@@ -39,11 +39,6 @@ def timetable(request):
 def marksheets(request):
     return render(request, 'components/marksheets.html')
 
-def postmarks(req):
-    return render(req, 'components/postmarks.html')
-
-def postattendance(req):
-    return render(req, 'components/postattendance.html')
 
 # Main typo..............
 def signin(request):
@@ -62,6 +57,10 @@ def signin(request):
             messages.error(request, "wrong credentials")
             return redirect('home')
     return render(request, "components/home.html", {})
+
+def signout(request):
+    logout(request)
+    return redirect('/')
 
 # Faculty
 
@@ -87,7 +86,7 @@ def handleroom(request):
         return HttpResponse("Attendence not opened")
 
 
-def post_attendance(request, room_no, session_no):
+def postattendance(request, room_no, session_no):
     room = Room.objects.get(room_no=room_no)
     session = Session.objects.get(session_no=session_no, Attendence=True)
 
@@ -99,7 +98,7 @@ def post_attendance(request, room_no, session_no):
     else:
         form = AttendanceForm(session_id=session.session_no, room_no=room_no)
 
-    return render(request, 'components/post_attendence.html', {'form': form})
+    return render(request, 'components/postattendence.html', {'form': form})
 
 def room_display_review(request):
     context={}
@@ -129,7 +128,7 @@ def handle_team(request, session_no, room_no):
     return redirect(redirect_url)
 
 
-def post_marks(request,session_no,room_no,team_name):
+def postmarks(request,session_no,room_no,team_name):
     r = Room.objects.get(room_no=room_no)
     session = Session.objects.get(session_no=session_no, Attendence=True)
     team=Team.objects.get(team_name=team_name)
@@ -147,4 +146,13 @@ def post_marks(request,session_no,room_no,team_name):
                 defaults={'review_marks': review_marks}
             )
         return HttpResponse('attendance_success')  # Redirect to a success page
-    return render(request, 'components/post_marks.html',context=context)
+    return render(request, 'components/postmarks.html',context=context)
+
+def errorPage(request, exception):
+    # we add the path to the 404.html file
+    # here. The name of our HTML file is 404.html
+    return render(request, 'components/error.html')
+def error500Page(request, exception=None, *_, **_k):
+    # we add the path to the 404.html file
+    # here. The name of our HTML file is 404.html
+    return render(request, 'components/error.html')

@@ -1,6 +1,10 @@
 {% extends 'base.html' %} {% block title %} Home {% endblock title %} 
 {% block body %}
 
-<h1>Post attendance to students</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit Attendance</button>
+</form>
 
 {% endblock body %}
