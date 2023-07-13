@@ -17,6 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+admin.site.site_header="KL CSE Grand Hackathon Admin"
+admin.site.site_title="Hackathon Admin Panel"
+admin.site.index_title="Welcome to KL CSE-Hackathon Admin Panel"
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('Website.urls'))
