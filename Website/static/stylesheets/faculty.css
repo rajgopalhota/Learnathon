@@ -51,3 +51,22 @@
 .roomsdisplay img{
     margin: auto;
 }
+
+@media only screen and (max-width: 800px) {
+    .roomsdisplay{
+        font-size: 12px;
+    }
+    .roomsdisplay table select{
+        font-size: 10px;
+    }
+    .roomsdisplay select option {
+        font-size: 8px;
+        border-radius: 6px;
+    }
+    .roomsdisplay button{
+        width: 90%;
+        margin-top: 5%;
+        font-size: 12px;
+        padding: 0;
+    }
+}

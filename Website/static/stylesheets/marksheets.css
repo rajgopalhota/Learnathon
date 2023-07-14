@@ -86,4 +86,22 @@
   .table th {
     font-size: 18px;
   }
+  .table{
+    font-size: 12px;
+  }
+  .leaderboard .table tbody tr:nth-child(1) {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+  .leaderboard .table tbody tr:nth-child(2) {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+  .leaderboard .table tbody tr:nth-child(3) {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
 }

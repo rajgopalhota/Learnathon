@@ -124,7 +124,6 @@
 .homecont{
   margin: auto;
   animation: floaterxr 1s;
-  
 }
 .kltitle img{
   transform: scale(1.5);
@@ -155,4 +154,28 @@
   0% { transform: translate(0,  0px); }
   50%  { transform: translate(0, 25px); }
   100%   { transform: translate(0, -0px); }   
+}
+
+@media only screen and (max-width: 800px) {
+  .home{
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  .homecont{
+    margin: 0;
+    padding: 0;
+  }
+  .container h1{
+    font-size: 48px;
+  }
+  .row > * {
+    padding-right: 25%;
+  }
+  .col{
+    flex: unset;
+    margin: auto;
+  }
+  #element{
+    font-size: 34px;
+  }
 }

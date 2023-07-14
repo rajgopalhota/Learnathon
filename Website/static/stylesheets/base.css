@@ -324,7 +324,7 @@ img {
     height: 60px;
   }
   header img {
-    height: 20px;
+    height: 15px;
     margin-right: auto;
   }
   header h1 {
@@ -350,3 +350,9 @@ img {
   }
 }
 
+/* Responsive */
+@media only screen and (max-width: 800px) {
+  body{
+    overflow-x: hidden;
+  }
+}
