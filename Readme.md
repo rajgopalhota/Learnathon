@@ -2,7 +2,7 @@
 
 ## Introduction
 <div style='text-align: justify;'>
-Welcome to our <h1 color = "red">hackathon website!</h1> Our website was built in just 48 hours using Django, a high-level Python web framework that enables rapid development of secure and maintainable websites1. Our website contains a posting marks section for faculty and students can check their timetable attendance scores and more.
+Welcome to our hackathon website! Our website was built in just 48 hours using Django, a high-level Python web framework that enables rapid development of secure and maintainable websites1. Our website contains a posting marks section for faculty and students can check their timetable attendance scores and more.
 
 This is a website for the upcoming hackathon event. It provides information about the event, registration details, and other relevant information.
 </div>
