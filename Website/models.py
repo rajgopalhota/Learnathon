@@ -76,3 +76,9 @@ class Teacher(models.Model):
     name=models.CharField(max_length=20,default="")
     def __str__(self):
         return str(self.id)
+
+
+# Timetable
+class TimeTable(models.Model):
+    text = models.CharField(max_length=30, unique=False)
+    pdf = models.FileField(upload_to='static/timetables')

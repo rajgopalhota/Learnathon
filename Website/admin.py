@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Announcement, Complaints, Room, Team, Student, Session, Attendence, Review, Teacher
+from .models import Announcement, Complaints, Room, Team, Student, Session, Attendence, Review, Teacher, TimeTable
 
 @admin.register(Room)
 class RoomAdmin(admin.ModelAdmin):
@@ -42,4 +42,5 @@ class TeacherAdmin(admin.ModelAdmin):
 
 admin.site.register(Announcement)
 admin.site.register(Complaints)
+admin.site.register(TimeTable)
 

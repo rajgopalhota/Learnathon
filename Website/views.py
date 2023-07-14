@@ -1,7 +1,7 @@
 
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Announcement, Complaints, Attendence,Student,Session,Review,Room,Team
+from .models import Announcement, Complaints, Attendence,Student,Session,Review,Room,Team, TimeTable
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -34,7 +34,9 @@ def announcements(request):
     return render(request, 'components/announcements.html', context)
 
 def timetable(request):
-    return render(request, 'components/timetable.html')
+    tt = TimeTable.objects.all()
+    context = {'timetable': tt}
+    return render(request, 'components/timetable.html', context)
 
 def marksheets(request):
     return render(request, 'components/marksheets.html')
