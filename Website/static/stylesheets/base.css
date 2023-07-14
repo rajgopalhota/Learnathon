@@ -1,13 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
 
-
-
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
-
 
 /* Animations */
 @keyframes floatery {
@@ -29,18 +26,21 @@
   }
 }
 
-input, textarea{
+input,
+textarea {
   border: none;
 }
 body {
   font-family: "Poppins", sans-serif;
   /* background: linear-gradient(to top, #031b3d 0%, #280345 100%) no-repeat center
     center fixed; */
-    background: url(/static/images/bg.jpg) no-repeat center center fixed;
-    background-size: cover;
-    user-select: none;
+  background: url(/static/images/bg.jpg) no-repeat center center fixed;
+  background-size: cover;
+  user-select: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
   display: none;
 }
 .navbar {
@@ -49,10 +49,11 @@ body::-webkit-scrollbar{
   box-shadow: 0 0 12px rgb(144, 144, 144);
   min-width: 100%;
 }
-.navbar-dark, .navbar[data-bs-theme=dark] {
+.navbar-dark,
+.navbar[data-bs-theme="dark"] {
   border-radius: 0 0 30px 30px;
 }
-.navbar-brand img{
+.navbar-brand img {
   filter: brightness(1.4);
 }
 .nav-link {
@@ -317,7 +318,6 @@ img {
   box-shadow: 0 4px 15px 0 rgba(112, 10, 229, 0.75);
 }
 
-
 @media (max-width: 600px) {
   header {
     font-size: 12px;
@@ -352,7 +352,7 @@ img {
 
 /* Responsive */
 @media only screen and (max-width: 800px) {
-  body{
+  body {
     overflow-x: hidden;
   }
 }
