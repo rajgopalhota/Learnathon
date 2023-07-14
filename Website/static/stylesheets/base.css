@@ -38,6 +38,7 @@ body {
     center fixed; */
     background: url(/static/images/bg.jpg) no-repeat center center fixed;
     background-size: cover;
+    user-select: none;
 }
 body::-webkit-scrollbar{
   display: none;

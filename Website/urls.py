@@ -9,6 +9,7 @@ urlpatterns = [
     path('timetable', views.timetable, name='timetable'),
     path('announcements', views.announcements, name='announcements'),
     path('reviews', views.reviews, name='reviews'),
+    path('leaderboard', views.leaderboard, name='leaderboard'),
     path("room/<room_no>",views.handleroom,name="room"),
     path("room_display",views.room_display,name="room_display"),
     path("handle_room",views.handleroom,name="handle_room"),

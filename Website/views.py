@@ -39,6 +39,9 @@ def timetable(request):
 def marksheets(request):
     return render(request, 'components/marksheets.html')
 
+def leaderboard(request):
+    return render(request, 'components/leaderboard.html')
+
 
 # Main typo..............
 def signin(request):
