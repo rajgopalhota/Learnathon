@@ -4,6 +4,8 @@
   max-width: 90%;
   color: white;
   margin: auto;
+  animation: floaterxr 1s;
+
 }
 .marksheets h1{
     font-weight: 800;

@@ -4,7 +4,7 @@
 }
 .announcecard{
     animation: floaterx 1s;
-    margin-top: 15px;
+    margin-top: 5px;
     background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
     border: 2px solid rgb(60, 60, 60);
     box-shadow: 0 0 16px black;

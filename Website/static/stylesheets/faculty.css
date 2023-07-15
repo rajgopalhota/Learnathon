@@ -1,72 +1,72 @@
-.mainroomplace{
-    display: flex;
-    justify-content: center;
+.mainroomplace {
+  display: flex;
+  justify-content: center;
+  animation: floatery 1s;
 }
-.roomsdisplay{
-    min-width: 80%;
-    display: inline-block;
-    font-size: 26px;
-    background-image: linear-gradient(to right, #243949ae 0%, #517fa4b5 100%);
-    color: white;
-    padding: 38px;
-    letter-spacing: 2px;
-    backdrop-filter: blur(22px);
-    border-radius: 14px;
-    border: 2px solid white;
-    box-shadow: 0 0 12px black;
-    text-transform: uppercase;
-    margin-top: 3%;
-    margin-left: auto;
-    margin-right: auto;
+.roomsdisplay {
+  min-width: 80%;
+  display: inline-block;
+  font-size: 26px;
+  background-image: linear-gradient(to right, #243949ae 0%, #517fa4b5 100%);
+  color: white;
+  padding: 38px;
+  letter-spacing: 2px;
+  backdrop-filter: blur(22px);
+  border-radius: 14px;
+  border: 2px solid white;
+  box-shadow: 0 0 12px black;
+  text-transform: uppercase;
+  margin-top: 3%;
+  margin-left: auto;
+  margin-right: auto;
 }
-.roomsdisplay label{
-    font-weight: 600;
-
+.roomsdisplay label {
+  font-weight: 600;
 }
-.roomsdisplay table{
-    text-align: center;
-    justify-content: center;
-    width: 100%;
+.roomsdisplay table {
+  text-align: center;
+  justify-content: center;
+  width: 100%;
 }
-.roomsdisplay table select{
-    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
-    width: 100%;
-    padding: 8px 42px;
-    border-radius: 14px;
-    text-align: center;
-    font-size: 22px;
-    margin: 2%;
+.roomsdisplay table select {
+  background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+  width: 100%;
+  padding: 8px 42px;
+  border-radius: 14px;
+  text-align: center;
+  font-size: 22px;
+  margin: 2%;
 }
 .roomsdisplay select option {
-    color: rgb(0, 0, 0);
-    background-color: rgba(255, 255, 255, 0.205);
-    backdrop-filter: blur(12px);
-    font-size: 18px;
-    border-radius: 12px;
+  color: rgb(0, 0, 0);
+  background-color: rgba(255, 255, 255, 0.205);
+  backdrop-filter: blur(12px);
+  font-size: 18px;
+  border-radius: 12px;
 }
-.roomsdisplay button{
-    width: 50%;
-    margin-top: 5%;
+.roomsdisplay button {
+  width: 50%;
+  margin-top: 5%;
 }
-.roomsdisplay img{
-    margin: auto;
+.roomsdisplay img {
+  margin: auto;
 }
 
 @media only screen and (max-width: 800px) {
-    .roomsdisplay{
-        font-size: 12px;
-    }
-    .roomsdisplay table select{
-        font-size: 10px;
-    }
-    .roomsdisplay select option {
-        font-size: 8px;
-        border-radius: 6px;
-    }
-    .roomsdisplay button{
-        width: 90%;
-        margin-top: 5%;
-        font-size: 12px;
-        padding: 0;
-    }
+  .roomsdisplay {
+    font-size: 12px;
+  }
+  .roomsdisplay table select {
+    font-size: 10px;
+  }
+  .roomsdisplay select option {
+    font-size: 8px;
+    border-radius: 6px;
+  }
+  .roomsdisplay button {
+    width: 90%;
+    margin-top: 5%;
+    font-size: 12px;
+    padding: 0;
+  }
 }

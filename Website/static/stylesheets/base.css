@@ -30,13 +30,24 @@ input,
 textarea {
   border: none;
 }
+input:-internal-autofill-selected {
+  background-color: transparent !important;
+  background-image: none !important;
+  color: -internal-light-dark-color(black, white) !important;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
 body {
   font-family: "Poppins", sans-serif;
   /* background: linear-gradient(to top, #031b3d 0%, #280345 100%) no-repeat center
     center fixed; */
-  background: url(/static/images/bg.jpg) no-repeat center center fixed;
+  background: url(/static/images/bg.jpg) center center fixed;
+  background-repeat: no-repeat;
   background-size: cover;
   user-select: none;
+  margin-bottom: 50px;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
