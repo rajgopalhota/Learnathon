@@ -1,10 +1,15 @@
 {% extends 'base.html' %} {% block title %} Home {% endblock title %} 
+{% load static %}
 {% block body %}
-
+<div class="mainroomplace">
+  <div class="roomsdisplay">
 <table>
   <form action="" method="post">
+    <input type="hidden" name="next" value="{{ request.path }}">
     {% csrf_token %}
-
+    <center>
+      <img class="floating" src="{% static 'images/studentico.svg' %}" width="250" />
+      </center>
     <tr>
       <th>ID</th>
       <th>Marks</th>
@@ -21,5 +26,7 @@
     <button type="submit">submit</button>
   </form>
 </table>
+</div>
+</div>
 
 {% endblock body %}

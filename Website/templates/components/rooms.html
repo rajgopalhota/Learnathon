@@ -2,7 +2,7 @@
 {% block body %}
 <div class="mainroomplace">
       <div class="roomsdisplay">
-        <form action="{% url 'handle_review_room' %}" method="post">
+        <form action="{% url 'handle_room' %}" method="post">
           {% csrf_token %}
           <center>
           <img class="floating" src="./static/images/studentico.svg" width="250" />

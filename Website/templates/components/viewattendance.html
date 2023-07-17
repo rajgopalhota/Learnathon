@@ -9,17 +9,22 @@
           <th scope="col">Review</th>
           <th scope="col">University ID</th>
           <th scope="col">Name</th>
-          <th scope="col">Marks</th>
+          <th scope="col">Status</th>
         </tr>
       </thead>
       <tbody>
         
-        {% for i in marks %}
+        {% for i in att %}
         <tr>
-        <td>{{i.review_no}}</td>
+        <td>{{i.session}}</td>
         <td>{{student.id}}</td>
         <td>{{student.name}}</td>
-        <td>{{i.review_marks}}</td>
+        {% if i.status == True %}
+             <td>present</td>
+        {% endif %}
+        {% if i.status == False %}
+             <td>absent</td>
+        {% endif %}
       </tr>
         {% endfor %}
         

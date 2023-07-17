@@ -12,31 +12,13 @@
         </tr>
       </thead>
       <tbody>
+        {% for i in marks%}
         <tr>
-          <td>2100032351</td>
-          <td>Raja</td>
-          <td>46</td>
+        {% for p in i%}
+             <td> {{p}}</td>
+        {% endfor %}
         </tr>
-        <tr>
-          <td>2100032331</td>
-          <td>XYZ</td>
-          <td>50</td>
-        </tr>
-        <tr>
-          <td>2100032331</td>
-          <td>XYZ</td>
-          <td>50</td>
-        </tr>
-        <tr>
-          <td>2100032331</td>
-          <td>XYZ</td>
-          <td>50</td>
-        </tr>
-        <tr>
-          <td>2100032331</td>
-          <td>XYZ</td>
-          <td>50</td>
-        </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>

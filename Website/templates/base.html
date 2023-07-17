@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image" href="/static/images/logo.png" />
+    <link rel="icon" type="image" href="{% static 'images/logo.png' %}" />
     <title>{% block title %}{% endblock title %}</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -13,15 +14,15 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="stylesheet" href="./static/stylesheets/base.css" />
-    <link rel="stylesheet" href="./static/stylesheets/home.css" />
-    <link rel="stylesheet" href="./static/stylesheets/announcement.css" />
-    <link rel="stylesheet" href="./static/stylesheets/faculty.css" />
-    <link rel="stylesheet" href="./static/stylesheets/footer.css" />
-    <link rel="stylesheet" href="./static/stylesheets/review.css" />
-    <link rel="stylesheet" href="./static/stylesheets/marksheets.css" />
-    <link rel="stylesheet" href="./static/stylesheets/backgroundani.css" />
-    <link rel="stylesheet" href="./static/stylesheets/timetable.css" />
+    <link rel="stylesheet" href="{% static 'stylesheets/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'stylesheets/home.css' %}" />
+    <link rel="stylesheet" href="{% static 'stylesheets/announcement.css' %}" />
+    <link rel="stylesheet" href="{% static 'stylesheets/faculty.css' %}" />
+    <link rel="stylesheet" href="{% static 'stylesheets/footer.css' %}" />
+    <link rel="stylesheet" href="{% static 'stylesheets/review.css' %}" />
+    <link rel="stylesheet" href="{% static 'stylesheets/marksheets.css' %}" />
+    <link rel="stylesheet" href="{% static 'stylesheets/backgroundani.css' %}" />
+    <link rel="stylesheet" href="{% static 'stylesheets/timetable.css' %}" />
     <script
       src="https://kit.fontawesome.com/1deaab12ff.js"
       crossorigin="anonymous"
@@ -59,9 +60,7 @@
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/"><i class="fa-solid fa-house-user" style="color: #ffffff"></i> Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/marksheets"><i class="fa-solid fa-file-circle-check" style="color: #ffffff"></i> Marks</a>
-            </li>
+
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/timetable"><i class="fa-solid fa-stopwatch" style="color: #ffffff"></i> Timetable</a>
             </li>
@@ -69,11 +68,28 @@
               <a class="nav-link" aria-current="page" href="/announcements"><i class="fa-solid fa-bullhorn" style="color: #ffffff"></i> Announcements</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/reviews"><i class="fa-solid fa-book" style="color: #ffffff"></i> HelpDesk</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/leaderboard"><i class="fa-solid fa-graduation-cap fa-bounce" style="color: #ffffff;"></i> LeaderBoard</a>
             </li>
+            
+            {% if user.is_authenticated  and  not user.is_staff %}
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+              <i class="fa-solid fa-school" style="color: #ffffff;"></i> Student
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href={% url 'marksheets' %}><i class="fa-solid fa-file-circle-check" style="color: #ffffff;"></i> Marks</a></li>
+                <li><a class="dropdown-item" href="/viewmyattendance"><i class="fa-solid fa-clipboard-user" style="color: #ffffff;"></i> Attendance</a></li>
+                <li><a class="dropdown-item" href="/reviews"><i class="fa-solid fa-book" style="color: #ffffff"></i> Helpdesk</a></li>
+              </ul>
+            </li>
+            {% endif %}
+            
             {% if user.is_staff %}
             <li class="nav-item dropdown">
               <a
@@ -87,7 +103,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="/room_display"><i class="fa-solid fa-clipboard-user" style="color: #ffffff;"></i> Post attendance</a></li>
-                <li><a class="dropdown-item" href="/postmarks"><i class="fa-regular fa-calendar-check" style="color: #ffffff;"></i> Post marks</a></li>
+                <li><a class="dropdown-item" href="/room_display_review"><i class="fa-regular fa-calendar-check" style="color: #ffffff;"></i> Post marks</a></li>
               </ul>
             </li>
             {% endif %}

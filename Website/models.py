@@ -34,6 +34,7 @@ class Room(models.Model):
 class Team(models.Model):
     room=models.ForeignKey(Room,on_delete=models.CASCADE)
     team_name=models.CharField(max_length=20)
+    # submitted=models.BooleanField(default=False)
     def __str__(self):
         return str(self.team_name)
     

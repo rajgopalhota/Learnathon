@@ -1,5 +1,5 @@
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,HttpResponseRedirect
 from django.contrib import messages
 from .models import Announcement, Complaints, Attendence,Student,Session,Review,Room,Team, TimeTable
 from django.http import HttpResponse
@@ -39,10 +39,38 @@ def timetable(request):
     return render(request, 'components/timetable.html', context)
 
 def marksheets(request):
-    return render(request, 'components/marksheets.html')
+    # print(request.user)
+    # print(Student.objects.get(user=request.user))
+    a=Student.objects.filter(user=User.objects.get(username=request.user))
+    x=0
+    for i in a:
+        x=i
+        break
+    print(x.name)
+    context={}
+    context['student']=x
+    context['marks']=Review.objects.filter(student=x).order_by('review_no')
+        
+    return render(request, 'components/marksheets.html',context)
 
 def leaderboard(request):
-    return render(request, 'components/leaderboard.html')
+    a=Student.objects.all()
+    context={}
+    f=[]
+    for i in a:
+        c=[]
+        r=Review.objects.filter(student=i)
+        s=0
+        for p in r:
+            s+=p.review_marks
+        c.append(i.id)
+        c.append(i.name)
+        c.append(s)
+        f.append(c)
+    
+    f=sorted(f,key=lambda f:f[2],reverse=True)
+    context["marks"]=f
+    return render(request, 'components/leaderboard.html',context)
 
 
 # Main typo..............
@@ -89,7 +117,7 @@ def handleroom(request):
     
     if session.Attendence == True:
         context["session"]=session
-        return redirect('attendance/'+str(a)+'/'+str(request.POST['session']))
+        return redirect('postattendance',room_no=str(a),session_no=request.POST['session'])
     else:
         return HttpResponse("Attendence not opened")
 
@@ -106,7 +134,9 @@ def postattendance(request, room_no, session_no):
     else:
         form = AttendanceForm(session_id=session.session_no, room_no=room_no)
 
-    return render(request, 'components/postattendence.html', {'form': form})
+    return render(request, 'components/postattendance.html', {'form': form})
+
+
 
 def room_display_review(request):
     context={}
@@ -130,22 +160,45 @@ def handle_review_room(request):
     else:
         return HttpResponse("session not activated")
 
+
+def handle(request,room,session):
+    a=Room.objects.get(room_no=room)
+    b=Student.objects.filter(room=a)
+    context={}
+    context["room"]=a
+    context["students"]=b
+    context["teams"]=Team.objects.filter(room=a)
+    session=Session.objects.get(session_no=int(session))
+    
+    if session.Attendence == True:
+        context["session"]=session
+        return render(request,'components/teams.html',context)
+    else:
+        messages.error(request,"session not yet opened")
+        return render(request,'components/teams.html')
+
+
 def handle_team(request, session_no, room_no):
     team_id = request.POST.get('team')
-    redirect_url = reverse('marks', args=(session_no, room_no, team_id))
+    redirect_url = reverse('postmarks', args=(session_no, room_no, team_id))
     return redirect(redirect_url)
 
-
-def postmarks(request,session_no,room_no,team_name):
+def postmarks(request, session_no, room_no, team_name):
     r = Room.objects.get(room_no=room_no)
     session = Session.objects.get(session_no=session_no, Attendence=True)
-    team=Team.objects.get(team_name=team_name)
-    a=Student.objects.filter(team=team)
-    context={}
-    context["students"]=a
+    team = Team.objects.get(team_name=team_name)
+    a = Student.objects.filter(team=team)
+    context = {}
+    context["students"] = a
+
     if request.method == 'POST':
         for i in a:
-            review_marks=request.POST[str(i.id)]
+            review_marks = request.POST[str(i.id)]
+            if Review.objects.filter(student=i, session=session, review_no=session_no, room=r).exists():
+                messages.error(request,"updation of the marks is not possible")
+                # return redirect("/handle" + "/" + room_no + "/" + session_no)
+                return redirect('handle',room=room_no,session=session_no)
+                # return HttpResponse('marks already posted cannot modify the marks')
             Review.objects.update_or_create(
                 student=i,
                 session=session,
@@ -153,9 +206,11 @@ def postmarks(request,session_no,room_no,team_name):
                 room=r,
                 defaults={'review_marks': review_marks}
             )
-        return HttpResponse('attendance_success')  # Redirect to a success page
-    return render(request, 'components/postmarks.html',context=context)
+        # team.submitted = True
+        # team.save()
+        return redirect('handle',room=room_no,session=session_no)
 
+    return render(request, 'components/postmarks.html', context=context)
 def errorPage(request, exception):
     # we add the path to the 404.html file
     # here. The name of our HTML file is 404.html
@@ -164,3 +219,15 @@ def error500Page(request, exception=None, *_, **_k):
     # we add the path to the 404.html file
     # here. The name of our HTML file is 404.html
     return render(request, 'components/error.html')
+
+def viewattendance(request):
+    a=Student.objects.filter(user=User.objects.get(username=request.user))
+    x=0
+    for i in a:
+        x=i
+        break
+    print(x.name)
+    context={}
+    context['student']=x
+    context['att']=Attendence.objects.filter(student=x).order_by('session')
+    return render(request,'components/viewattendance.html',context)
