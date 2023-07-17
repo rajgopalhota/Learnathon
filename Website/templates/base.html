@@ -54,21 +54,21 @@
           <ul class="navbar-nav me-auto mb-1 mb-lg-0">
             {% if user.is_superuser %}
               <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="admin"><i class="fa-solid fa-screwdriver-wrench fa-fade" style="color: #ffffff;"></i> Admin</a>
+              <a class="nav-link" aria-current="page" href="/admin"><i class="fa-solid fa-screwdriver-wrench fa-fade" style="color: #ffffff;"></i> Admin</a>
               </li>
             {% endif %}
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/"><i class="fa-solid fa-house-user" style="color: #ffffff"></i> Home</a>
+              <a class="nav-link" aria-current="page" href={% url 'home' %}><i class="fa-solid fa-house-user" style="color: #ffffff"></i> Home</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/timetable"><i class="fa-solid fa-stopwatch" style="color: #ffffff"></i> Timetable</a>
+              <a class="nav-link" aria-current="page" href={% url 'timetable' %}><i class="fa-solid fa-stopwatch" style="color: #ffffff"></i> Timetable</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/announcements"><i class="fa-solid fa-bullhorn" style="color: #ffffff"></i> Announcements</a>
+              <a class="nav-link" aria-current="page" href={% url 'announcements' %}><i class="fa-solid fa-bullhorn" style="color: #ffffff"></i> Announcements</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/leaderboard"><i class="fa-solid fa-graduation-cap fa-bounce" style="color: #ffffff;"></i> LeaderBoard</a>
+              <a class="nav-link" aria-current="page" href={% url 'leaderboard' %}><i class="fa-solid fa-graduation-cap fa-bounce" style="color: #ffffff;"></i> LeaderBoard</a>
             </li>
             
             {% if user.is_authenticated  and  not user.is_staff %}
