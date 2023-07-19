@@ -2,6 +2,7 @@
 {% block body %}
 <div class="mainroomplace">
   <div class="roomsdisplay">
+    {% if user.is_staff and user.is_authenticated %}
     <form
       action="{% url 'handle_team' session_no=session.session_no room_no=room.room_no %}"
       method="post"
@@ -42,6 +43,10 @@
         </tbody>
       </table>
     </form>
+    {% endif %}
+    {% if not user.is_staff %}
+    <h1>you have donot have acess to use this</h1>
+    {%endif %}
   </div>
 </div>
 {% endblock body %}

@@ -3,7 +3,9 @@
 {% block body %}
 <div class="mainroomplace">
   <div class="roomsdisplay">
+    {% if user.is_staff and user.is_authenticated %}
 <table>
+  
   <form action="" method="post">
     <input type="hidden" name="next" value="{{ request.path }}">
     {% csrf_token %}
@@ -25,7 +27,12 @@
     {% endfor %}
     <button type="submit">submit</button>
   </form>
+
 </table>
+{% endif %}
+{% if not user.is_staff %}
+<h1>you have donot have acess to use this</h1>
+{%endif %}
 </div>
 </div>
 

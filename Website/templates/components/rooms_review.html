@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block title %} Rooms Review {% endblock title %} 
 {% block body %}
-
+{% if user.is_staff and user.is_authenticated %}
 <form action="{% url 'handle_review_room' %}" method="post">
   {% csrf_token %}
   <label for="room">Choose a Room</label>
@@ -19,5 +19,8 @@
   </select>
   <button type="submit">proceed</button>
 </form>
-
+ {% endif %}
+    {% if not user.is_staff %}
+    <h1>you have donot have acess to use this</h1>
+    {%endif %}
 {% endblock body %}

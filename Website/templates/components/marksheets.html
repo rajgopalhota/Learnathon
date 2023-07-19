@@ -3,6 +3,7 @@
 <div class="marksheets">
   <h1>Marksheets tab</h1>
   <div class="table-responsive card">
+    {% if user.is_staff and user.is_authenticated %}
     <table class="table">
       <thead>
         <tr>
@@ -26,6 +27,10 @@
           
       </tbody>
     </table>
+    {% endif %}
+    {% if not user.is_staff %}
+    <h1>you have donot have acess to use this</h1>
+    {%endif %}
   </div>
 </div>
 {% endblock body %}

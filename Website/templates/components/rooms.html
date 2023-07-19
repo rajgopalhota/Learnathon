@@ -2,6 +2,7 @@
 {% block body %}
 <div class="mainroomplace">
       <div class="roomsdisplay">
+        {% if user.is_staff and user.is_authenticated %}
         <form action="{% url 'handle_room' %}" method="post">
           {% csrf_token %}
           <center>
@@ -54,6 +55,10 @@
             </tbody>
           </table>
         </form>
+        {% endif %}
+    {% if not user.is_staff %}
+    <h1>you have donot have acess to use this</h1>
+    {%endif %}
       </div>
     </div>
   {% endblock body %}
