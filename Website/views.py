@@ -17,19 +17,21 @@ def home(request):
     return render(request, 'components/home.html')
 
 def reviews(request):
-    if request.method == "POST" and request.user.is_authenticated:
-        teamno = request.POST.get('teamno')
-        idno = request.POST.get('idno')
-        roomno = request.POST.get('roomno')
-        query = request.POST.get('query')
-        msg = request.POST.get('msg')
-        complaint = Complaints(teamno=teamno, idno=idno, roomno = roomno, query = query, msg = msg)
-        complaint.save()
-        messages.success(request, "Your Complaint has been posted successfully")
-    else:
-        messages.warning(request,"please login first and add the complaint then")
-        return redirect('login')
-    return render(request, 'components/reviews.html')
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            teamno = request.POST.get('teamno')
+            idno = request.POST.get('idno')
+            roomno = request.POST.get('roomno')
+            query = request.POST.get('query')
+            msg = request.POST.get('msg')
+            complaint = Complaints(teamno=teamno, idno=idno, roomno = roomno, query = query, msg = msg)
+            complaint.save()
+            messages.success(request, "Your Complaint has been posted successfully")
+            return render(request, 'components/reviews.html')
+        return render(request, 'components/reviews.html')
+        
+    messages.warning(request,"please login first and add the complaint then")
+    return render(request, 'components/home.html')
 
 def announcements(request):
     announced = Announcement.objects.all().order_by('sno').reverse()
