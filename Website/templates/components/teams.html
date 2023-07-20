@@ -1,4 +1,5 @@
 {% extends 'base.html' %} {% block title %} Teams {% endblock title %}
+{% load static %} 
 {% block body %}
 <div class="mainroomplace">
   <div class="roomsdisplay">
@@ -9,7 +10,7 @@
     >
       {% csrf_token %}
       <center>
-        <img class="floating" src="./static/images/studentico.svg" width="250" />
+        <img class="floating" src="{% static 'images/studentico.svg' %}" width="250" />
       </center>
       <table>
         <tbody>

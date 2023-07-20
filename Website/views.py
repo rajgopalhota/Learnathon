@@ -106,7 +106,7 @@ def signin(request):
 
 def signout(request):
     logout(request)
-    return redirect('/')
+    return redirect('home')
 
 # Faculty
 
@@ -134,7 +134,8 @@ def handleroom(request):
             context["session"]=session
             return redirect('postattendance',room_no=str(a),session_no=request.POST['session'])
         else:
-            return HttpResponse("Attendence not opened")
+            messages.info(request,"Attendence not yet opened!")
+            return redirect('home')
     else:
         messages.error(request,"you don't have acess to use this")
         logout(request)
@@ -151,13 +152,15 @@ def postattendance(request, room_no, session_no):
             form = AttendanceForm(request.POST, session_id=session_no, room_no=room_no)
             if form.is_valid():
                 form.save_attendance(session)
-                return HttpResponse('attendance_success')  # Redirect to a success page
+                messages.success(request,"Attendance saved successfully!")
+                return redirect('home')  # Redirect to a success page
         elif not request.user.is_staff:
-            return HttpResponse("you are prohibeted to do this")
+            messages.error(request,"You don't have access to it!")
+            return redirect('home')  # Redirect to a success page
         else:
             form = AttendanceForm(session_id=session.session_no, room_no=room_no)
     
-        return render(request, 'components/postattendance.html', {'form': form})
+        return render(request, 'components/postattendance.html', {'students': form})
     else:
         messages.error(request,"you don't have acess to use this")
         logout(request)
@@ -173,7 +176,7 @@ def room_display_review(request):
         context["sessions"]=Session.objects.all()
         return render(request,"components/rooms_review.html",context)
     else:
-        messages.error(request,"you did not have acess to use this")
+        messages.error(request,"you did not have access to use this")
         logout(request)
         return redirect("home")
     
@@ -192,7 +195,8 @@ def handle_review_room(request):
             context["session"]=session
             return render(request,'components/teams.html',context)
         else:
-            return HttpResponse("session not activated")
+            messages.info(request,"Session not activated!")
+            return redirect('home')  # Redirect to a success page
 
     else:
         messages.error(request,"you does not have the permissions to use this")
@@ -214,7 +218,8 @@ def handle(request,room,session):
             context["session"]=sessio
             return render(request,'components/teams.html',context)
         else:
-            return HttpResponse("session not activated")
+            messages.info(request,"Session not activated!")
+            return redirect('home')  # Redirect to a success page
     else:
         messages.error(request,"you does not have the permissions to use this")
         logout(request)
@@ -245,9 +250,8 @@ def postmarks(request, session_no, room_no, team_name):
                 review_marks = request.POST[str(i.id)]
                 if Review.objects.filter(student=i, session=session, review_no=session_no, room=r).exists():
                     messages.error(request,"updation of the marks is not possible")
-                # return redirect("/handle" + "/" + room_no + "/" + session_no)
                     return redirect('handle',room=room_no,session=session_no)
-                # return HttpResponse('marks already posted cannot modify the marks')
+                
                 Review.objects.update_or_create(
                     student=i,
                     session=session,

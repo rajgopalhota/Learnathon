@@ -1,26 +1,65 @@
 {% extends 'base.html' %} {% block title %} Rooms Review {% endblock title %} 
+{% load static %} 
 {% block body %}
 {% if user.is_staff and user.is_authenticated %}
+
+<div class="mainroomplace">
+  <div class="roomsdisplay">
+
 <form action="{% url 'handle_review_room' %}" method="post">
   {% csrf_token %}
-  <label for="room">Choose a Room</label>
-  <select name="room" id="room">
-    {% for room_obj in rooms %}
-    <option value="{{ room_obj.room_no }}">{{ room_obj.room_no }}</option>
-    {% endfor %}
-  </select>
-  <label for="session">Choose a Session</label>
-  <select name="session" id="session">
-    {% for session_obj in sessions %}
-    <option value="{{ session_obj.session_no }}">
-      {{ session_obj.session_no }}
-    </option>
-    {% endfor %}
-  </select>
-  <button type="submit">proceed</button>
+  <center>
+    <img class="floating" src="{% static 'images/studentico.svg' %}" width="250" />
+    </center>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <label for="room"><i class="fa-solid fa-person-shelter" style="color: #ffffff;"></i> Choose Room</label>
+          </td>
+          <td>
+            <select name="room" id="room">
+              <option value="none">Select One</option>
+              {% for room_obj in rooms %}
+              <option value="{{ room_obj.room_no }}">
+                {{ room_obj.room_no }}
+              </option>
+              {% endfor %}
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="session"><i class="fa-brands fa-chrome" style="color: #ffffff;"></i> Choose Session</label>
+          </td>
+          <td>
+            <select name="session" id="session">
+              <option value="none">Select One</option>
+              {% for session_obj in sessions %}
+              <option value="{{ session_obj.session_no }}">
+                {{ session_obj.session_no }}
+              </option>
+              {% endfor %}
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button type="reset" class="tooltip-btn-hover color-2">
+              RESET
+            </button>
+          </td>
+          <td>
+            <button type="submit" class="tooltip-btn-hover color-1">
+              PROCEED
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 </form>
+</div>
+</div>
  {% endif %}
-    {% if not user.is_staff %}
-    <h1>you have donot have acess to use this</h1>
-    {%endif %}
+
 {% endblock body %}
