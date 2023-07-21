@@ -18,7 +18,8 @@ class AttendanceForm(forms.Form):
         for field_name, field_value in self.cleaned_data.items():
             student_id = int(field_name)
             student = Student.objects.get(id=student_id)
-            status = field_value if field_value else False
+            print(field_value)
+            status = not field_value if field_value else True
 
             Attendence.objects.update_or_create(
                 student=student,
@@ -35,5 +36,5 @@ class AttendanceForm(forms.Form):
                 student=student,
                 session=self.session,
                 room=self.room,
-                defaults={'status': False}
+                defaults={'status': True}
             )

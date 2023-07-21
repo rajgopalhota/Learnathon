@@ -11,6 +11,7 @@
           <th scope="col">University ID</th>
           <th scope="col">Name</th>
           <th scope="col">Marks</th>
+          <th scope="col">Re-Marks</th>
         </tr>
       </thead>
       <tbody>
@@ -21,6 +22,7 @@
         <td>{{student.id}}</td>
         <td>{{student.name}}</td>
         <td>{{i.review_marks}}</td>
+        <td>{{i.remarks}}</td>
       </tr>
         {% endfor %}
         
@@ -28,6 +30,11 @@
       </tbody>
     </table>
     {% endif %}
+    {% if not user.is_authenticated%}
+    <div class="table-responsive card">
+      <h1>Please login to view marks</h1>
+    </div>
+    {%endif%}
   </div>
 </div>
 {% endblock body %}

@@ -1,34 +1,30 @@
 {% extends 'base.html' %} {% block title %} Home {% endblock title %} 
 {% block body %}
-{% if user.is_staff and user.is_authenticated %}
+{% if user.is_superuser and user.is_authenticated %}
  <div class="marksheets postattendtable">
-  <h1>POST ATTENDANCE</h1>
-  <span>Check the box if student is absent!</span>
+  <h1>Attendance Report</h1>
   <div class="table-responsive card">
-    <form method="post">
-      {% csrf_token %}
       <table>
         <thead>
           <tr>
-            <th>Student ID</th>
-            <th>Attendance</th>
+          
+            <th>Room</th>
+            <th>Present</th>
+            <th>Absent</th>
+            <th>Attendance percentage</th>
           </tr>
         </thead>
         <tbody>
-          {% for student in students %}
+          {% for i in rooms %}
             <tr>
-              <td>{{ student.name }}</td>
-              <td>
-                {{student}}
-              
+              {% for j in i%}
+              <td>{{j}}</td>
+              {% endfor %}             
             </tr>
           {% endfor %}
         </tbody>
       </table>      
-      <button type="submit" class="tooltip-btn-hover color-1 postbtn">
-        Submit Attendance
-      </button>
-    </form>
+      
   </div>
 </div>
 

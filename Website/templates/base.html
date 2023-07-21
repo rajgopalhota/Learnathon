@@ -53,6 +53,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-1 mb-lg-0">
             {% if user.is_superuser %}
+            
               <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/admin"><i class="fa-solid fa-screwdriver-wrench fa-fade" style="color: #ffffff;"></i> Admin</a>
               </li>
@@ -84,8 +85,8 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href={% url 'marksheets' %}><i class="fa-solid fa-file-circle-check" style="color: #ffffff;"></i> Marks</a></li>
-                <li><a class="dropdown-item" href="/viewmyattendance"><i class="fa-solid fa-clipboard-user" style="color: #ffffff;"></i> Attendance</a></li>
-                <li><a class="dropdown-item" href="/reviews"><i class="fa-solid fa-book" style="color: #ffffff"></i> Helpdesk</a></li>
+                <li><a class="dropdown-item" href={% url 'viewmyattendance' %}><i class="fa-solid fa-clipboard-user" style="color: #ffffff;"></i> Attendance</a></li>
+                <li><a class="dropdown-item" href={% url 'reviews' %}><i class="fa-solid fa-book" style="color: #ffffff"></i> Helpdesk</a></li>
               </ul>
             </li>
             {% endif %}
@@ -102,13 +103,41 @@
               <i class="fa-solid fa-chalkboard-user" style="color: #ffffff;"></i> Faculty
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/room_display"><i class="fa-solid fa-clipboard-user" style="color: #ffffff;"></i> Post attendance</a></li>
-                <li><a class="dropdown-item" href="/room_display_review"><i class="fa-regular fa-calendar-check" style="color: #ffffff;"></i> Post marks</a></li>
+                <li><a class="dropdown-item" href={% url 'room_display' %}><i class="fa-solid fa-clipboard-user" style="color: #ffffff;"></i> Post attendance</a></li>
+                <li><a class="dropdown-item" href={% url 'room_display_review' %}><i class="fa-regular fa-calendar-check" style="color: #ffffff;"></i> Post marks</a></li>
               </ul>
             </li>
             {% endif %}
-          </ul>
 
+            {% if user.is_superuser %}
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+            <i class="fa-solid fa-flag-checkered fa-fade"></i> Reports
+            </a>
+            <ul class="dropdown-menu">
+              {% comment %} <li><a class="dropdown-item" href={% url 'open' %}><i class="fa-solid fa-clipboard-user" style="color: #ffffff;"></i>Give Acess to post marks</a></li> {% endcomment %}
+              {% comment %} <li><a class="dropdown-item" href={% url 'reports' %}><i class="fa-regular fa-calendar-check" style="color: #ffffff;"></i>Reports</a></li> {% endcomment %}
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href={% url 'open' %}><i class="fa-solid fa-house-user" style="color: #ffffff"></i> open </a>
+              </li>
+              {% for i in session_att %}
+              <li><a class="dropdown-item" href={% url 'gen' session=i %}><i class="fa-solid fa-clipboard-user" style="color: #ffffff;"></i>AttRpt-{{i}}</a></li>
+              {%endfor%}
+              {% for i in session_rev %}
+              <li><a class="dropdown-item" href={% url 'genmarks' session=i %}><i class="fa-solid fa-clipboard-user" style="color: #ffffff;"></i>RevRpt-{{i}}</a></li>
+              {%endfor%}
+            </ul>
+          </li>
+          {%endif%}
+
+          </ul>
+          
           <a
           href="#"
           class="homenavlink"
@@ -116,7 +145,7 @@
           data-bs-target="#loginModal"
         >
         {% if user.is_authenticated %}
-          <a href="/logout" title="Logout">
+          <a href={% url 'logout'%} title="Logout">
             <button class="d-flex btn btn-success"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i></button>
           </a>
         {% else %}
@@ -129,6 +158,7 @@
 
     {% for message in messages %}
       <div
+
         class="alert alert-{{message.tags}} mb-0 alert-dismissible fade show"
         role="alert"
         id="popupmsg"

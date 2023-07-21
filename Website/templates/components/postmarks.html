@@ -14,6 +14,7 @@
             <tr>
               <th>Student ID</th>
               <th>Marks Awarded</th>
+              <th>Re-Marks</th>
             </tr>
           </thead>
           <tbody>
@@ -21,7 +22,10 @@
             <tr>
               <td>{{student.id}}</td>
               <td>
-                <input type="number" name="{{student.id}}" value="0" min="0" max="10" required />
+                <input type="number" name="id_{{student.id}}" value="0" min="0" max="10" required />
+              </td>
+              <td>
+                <input type="text" name="remarks_{{student.id}}" required />
               </td>
             </tr>
           {% endfor %}
