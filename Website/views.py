@@ -1,7 +1,7 @@
 
 from django.shortcuts import render, redirect,HttpResponseRedirect
 from django.contrib import messages
-from .models import Announcement, Complaints, Attendence,Student,Session,Review,Room,Team, TimeTable,Teacher
+from .models import Announcement, Complaints, Attendence,Student,Session,Review,Room,Team, TimeTable,Teacher,Rubrics
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -43,7 +43,7 @@ def reviews(request):
     return render(request, 'components/home.html')
 
 def announcements(request):
-    announced = Announcement.objects.all().order_by('sno').reverse()
+    announced = Announcement.objects.all().order_by('sno')
     context = {'announce': announced, 'user': request.user}
     return render(request, 'components/announcements.html', context)
 
@@ -250,10 +250,9 @@ def handle_team(request, session_no, room_no):
     #     logout(request)
     #     return redirect("home")
 
+
 def postmarks(request, session_no, room_no, team_name):
-    # if request.user.is_staff and request.user.is_authenticated:
-    # if request.user.is_authenticated:
-    
+       
     a=Teacher.objects.get(user=User.objects.get(username=request.user))
     if room_no != a.room.room_no:
         messages.error(request,"please choose alocated section")
@@ -261,7 +260,7 @@ def postmarks(request, session_no, room_no, team_name):
     
     r = Room.objects.get(room_no=room_no)
     session = Session.objects.get(session_no=session_no, Attendence=True)
-    if len(session)==0:
+    if session == None:
         messages.error(request,"please post the attendence first")
         redirect('home')
         
@@ -273,9 +272,9 @@ def postmarks(request, session_no, room_no, team_name):
         if qw.status == False or not qw:
             b=False
             break
-        
-    print(b)
+    rbs=Rubrics.objects.get(review_no=session_no)
     context = {}
+    context['rubrics']=rbs.review_rubrics
     context["students"] = a
     # c=Attendence.objects.filter(room=r,status=True)
     if request.method == 'POST':
@@ -397,6 +396,18 @@ def add_faculty(request):
     try:
         if request.user.is_superuser:
             utils.add_faculty()
+            messages.success(request,"Users added")
+            return redirect('home')
+        messages.error(request,"you does  not have the acess to do this")
+        return redirect('home')
+    except:
+        messages.error(request,"csv not found")
+        return redirect('home')
+
+def add_rooms(request):
+    try:
+        if request.user.is_superuser:
+            utils.add_rooms()
             messages.success(request,"Users added")
             return redirect('home')
         messages.error(request,"you does  not have the acess to do this")

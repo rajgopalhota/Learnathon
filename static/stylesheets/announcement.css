@@ -11,9 +11,9 @@
     color: rgb(0, 0, 0);
     margin-bottom: 15%;
     min-height: 320px;
-    text-align: justify;
     letter-spacing: 1px;
     font-weight: 300;
+    text-align: left;
 }
 .announcecard:hover{
     cursor: pointer;
@@ -22,5 +22,8 @@
     transform: scale(1.015);
 }
 .card-text{
-    text-align: justify;
+    font-weight: 700;
+}
+.announcecard li{
+    list-style: none;
 }

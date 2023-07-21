@@ -11,10 +11,15 @@ from datetime import date
 class Announcement(models.Model):
     sno = models.AutoField(primary_key=True)
     notice = models.TextField(default="")
+    rev1 = models.TextField(default="")
+    rev2 = models.TextField(default="")
+    rev3 = models.TextField(default="")
+    rev4 = models.TextField(default="")
     source = models.TextField(null=True)
     timestamp = models.DateTimeField(default=now)
     def __str__(self):
         return str(self.notice+" at:"+str(self.timestamp))
+
 
 class Complaints(models.Model):
     sno = models.AutoField(primary_key=True)
@@ -28,8 +33,8 @@ class Complaints(models.Model):
         return 'By: '+self.idno+' Room: '+self.roomno+' Issue: '+self.query
 
 class Room(models.Model):
-    room_no=models.CharField(max_length=20,primary_key=True,default=None)
     
+    room_no=models.CharField(max_length=20,unique=True,default=None)
     def __str__(self):
         return str(self.room_no)
 # Create your models here.
@@ -50,16 +55,36 @@ class Student(models.Model):
     team = models.ForeignKey(Team,on_delete=models.CASCADE)
     room=models.ForeignKey(Room,on_delete=models.CASCADE)
     # team = models.ForeignKey(Team,on_delete=models.CASCADE)
+   
+    @property
+    def attendance(self):
+        sras=Attendence.objects.filter(student=self)
+        att=sras.filter(status=False).count()
+        total=sras.count()
+        if total == 0:
+            return "0%"
+        return str((att / total)*100)+'%'
+    
+    @property
+    def score(self):
+        scrs=Review.objects.filter(student=self)
+        score=0
+        for s in scrs:
+            score+=int(s.review_marks)
+        return score
+    
     def __str__(self):
         return str(self.id)
     def save(self, *args, **kwargs):
         self.room=self.team.room
         super(Student, self).save(*args, **kwargs)
-
+    
 class Session(models.Model):
-    session_no=models.IntegerField()
+    session_no=models.IntegerField(primary_key=True,default=None)
     Attendence=models.BooleanField(null=True)
     Review=models.BooleanField(null=True)
+    # rubrics=models.CharField(max_length=500,null=False,default=" ")
+    
     def __str__(self):
         return str(self.session_no)
 
@@ -68,8 +93,14 @@ class Attendence(models.Model):
     session = models.ForeignKey(Session,on_delete=models.CASCADE)
     status = models.BooleanField(default=True)
     room=models.ForeignKey(Room,on_delete=models.CASCADE,default=None)
+    
+    @property
+    def stu_id(self):
+        return str(self.student.id)
+    
     def __str__(self):
         return str(self.student.id)
+    
     
 class Review(models.Model):
     room=models.ForeignKey(Room,on_delete=models.CASCADE,default=None)
@@ -95,5 +126,7 @@ class Teacher(models.Model):
 class TimeTable(models.Model):
     text = models.CharField(max_length=30, unique=False)
     pdf = models.FileField(upload_to='timetables')
-    def __str__(self):
-        return str(self.text)
+    
+class Rubrics(models.Model):
+    review_no=models.IntegerField(primary_key=True,default=0)
+    review_rubrics=models.CharField(max_length=500)

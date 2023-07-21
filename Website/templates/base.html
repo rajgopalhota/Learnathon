@@ -63,7 +63,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href={% url 'timetable' %}><i class="fa-solid fa-stopwatch" style="color: #ffffff"></i> Schedule</a>
+              <a class="nav-link" aria-current="page" href={% url 'timetable' %}><i class="fa-solid fa-stopwatch" style="color: #ffffff"></i> Timetable</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href={% url 'announcements' %}><i class="fa-solid fa-bullhorn" style="color: #ffffff"></i> Announcements</a>
@@ -127,10 +127,10 @@
                 <a class="nav-link" aria-current="page" href={% url 'open' %}><i class="fa-solid fa-house-user" style="color: #ffffff"></i> open </a>
               </li>
               {% for i in session_att %}
-              <li><a class="dropdown-item" href={% url 'gen' session=i %}><i class="fa-solid fa-clipboard-user" style="color: #ffffff;"></i> AttRpt-{{i}}</a></li>
+              <li><a class="dropdown-item" href={% url 'gen' session=i %}><i class="fa-solid fa-clipboard-user" style="color: #ffffff;"></i>AttRpt-{{i}}</a></li>
               {%endfor%}
               {% for i in session_rev %}
-              <li><a class="dropdown-item" href={% url 'genmarks' session=i %}><i class="fa-solid fa-clipboard-user" style="color: #ffffff;"></i> RevRpt-{{i}}</a></li>
+              <li><a class="dropdown-item" href={% url 'genmarks' session=i %}><i class="fa-solid fa-clipboard-user" style="color: #ffffff;"></i>RevRpt-{{i}}</a></li>
               {%endfor%}
             </ul>
           </li>
