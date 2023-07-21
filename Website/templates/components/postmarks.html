@@ -5,6 +5,13 @@
   <h1>POST Marks for </h1>
   <span>Marks must be in between 0 to 10!</span>
     {% if user.is_staff and user.is_authenticated %}
+    <div class="card">
+    <div class="card-body">
+      <p class="card-text">
+        <i class="fa-solid fa-laptop-code fa-bounce" style="color: #4200a3;"></i> {{rubrics}}
+      </p>
+    </div>
+    </div>
     <div class="table-responsive card">
       <form action="" method="post">
         <input type="hidden" name="next" value="{{ request.path }}">
@@ -29,7 +36,6 @@
               </td>
             </tr>
           {% endfor %}
-          <td>{{rubrics}}</td>
           </tbody>
         </table>      
         <button type="submit" class="tooltip-btn-hover color-1 postbtn">

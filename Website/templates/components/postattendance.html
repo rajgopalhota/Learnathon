@@ -3,7 +3,7 @@
 {% if user.is_staff and user.is_authenticated %}
  <div class="marksheets postattendtable">
   <h1>POST ATTENDANCE</h1>
-  <span>Check the box if student is absent!</span>
+  <h1>Check the box if student is absent!</h1>
   <div class="table-responsive card">
     <form method="post">
       {% csrf_token %}
