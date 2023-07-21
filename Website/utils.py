@@ -6,7 +6,7 @@ def add_students():
         csv_reader = csv.reader(csv_file)
         for row in csv_reader:
             username = row[0]
-            password = row[2]
+            password = row[1]
             email = f"{username}@kluniversity.in"
             if not User.objects.filter(username=username).exists():
                 User.objects.create_user(username=username, email=email, password=password)

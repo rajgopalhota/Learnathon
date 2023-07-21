@@ -10,10 +10,11 @@ from datetime import date
 
 class Announcement(models.Model):
     sno = models.AutoField(primary_key=True)
-    notice = models.TextField(default="Example notice....")
+    notice = models.TextField(default="")
     source = models.TextField(null=True)
     timestamp = models.DateTimeField(default=now)
-
+    def __str__(self):
+        return str(self.notice+" at:"+str(self.timestamp))
 
 class Complaints(models.Model):
     sno = models.AutoField(primary_key=True)
@@ -94,3 +95,5 @@ class Teacher(models.Model):
 class TimeTable(models.Model):
     text = models.CharField(max_length=30, unique=False)
     pdf = models.FileField(upload_to='timetables')
+    def __str__(self):
+        return str(self.text)
