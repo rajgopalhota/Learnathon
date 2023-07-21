@@ -125,7 +125,14 @@ class Teacher(models.Model):
 # Timetable
 class TimeTable(models.Model):
     text = models.CharField(max_length=30, unique=False)
-    pdf = models.FileField(upload_to='timetables')
+    pdf = models.FileField(null=True, blank=True)
+    @property
+    def pdfURL(self):
+        try:
+            url = self.pdf.url
+        except:
+            url=''
+        return url
     
 class Rubrics(models.Model):
     review_no=models.IntegerField(primary_key=True,default=0)
