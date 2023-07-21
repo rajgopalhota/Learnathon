@@ -3,8 +3,9 @@
 {% block body %}
 
 <div class="timetable">
-  <h1><i class="fa-solid fa-clock fa-spin"></i> Time Table</h1>
+  <h1><i class="fa-solid fa-clock fa-spin"></i> Schedules</h1>
   {% for tt in timetable %}
+  <h2>{{tt.text}}</h2>
   <object
     data="static/{{tt.pdf}}"
     type="application/pdf"
