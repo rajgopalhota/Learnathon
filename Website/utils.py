@@ -1,36 +1,34 @@
 from django.contrib.auth.models import User
 import csv
-from .models import Room,Team,Student
-def add_students():
-    with open('static/csvs/student.csv', 'r') as csv_file:
-        csv_reader = csv.reader(csv_file)
-        for row in csv_reader:
-            username = row[0]
-            password = row[1]
-            email = f"{username}@kluniversity.in"
-            if not User.objects.filter(username=username).exists():
-                User.objects.create_user(username=username, email=email, password=password)
-            # print(row)
+from .models import Room,Team,Student,Teacher
+# def add_students():
+#     with open('static/csvs/student.csv', 'r') as csv_file:
+#         csv_reader = csv.reader(csv_file)
+#         for row in csv_reader:
+#             username = row[0]
+#             password = row[1]
+#             email = f"{username}@kluniversity.in"
+#             if not User.objects.filter(username=username).exists():
+#                 User.objects.create_user(username=username, email=email, password=password)
+#             # print(row)
 
-def add_faculty():
-    with open('static/csvs/faculty.csv', 'r') as csv_file:
-        csv_reader = csv.reader(csv_file)
-        for row in csv_reader:
-            username = row[0]
-            password = row[2]
-            email = f"{username}@kluniversity.in"
-            if not User.objects.filter(username=username).exists():
-                User.objects.create_user(username=username, email=email, password=password, is_staff = True)
-            # print(row)
+# def add_faculty():
+#     with open('static/csvs/faculty.csv', 'r') as csv_file:
+#         csv_reader = csv.reader(csv_file)
+#         for row in csv_reader:
+#             username = row[1]
+#             r=Room.objects.get(room_no=row[0])
+#             Teacher.objects.create(user=User.objects.get(username=username),id=int(username),name=row[2],room=r).save()
 
-def add_rooms():
-    with open('static/csvs/rooms.csv', 'r') as csv_file:
-        csv_reader = csv.reader(csv_file)
-        for row in csv_reader:
-            room_no = row[0]
-            # print(row)
-            if not Room.objects.filter(room_no=room_no).exists():
-                Room.objects.create(room_no=room_no).save()
+
+# def add_rooms():
+#     with open('static/csvs/rooms.csv', 'r') as csv_file:
+#         csv_reader = csv.reader(csv_file)
+#         for row in csv_reader:
+#             room_no = row[0]
+#             # print(row)
+#             if not Room.objects.filter(room_no=room_no).exists():
+#                 Room.objects.create(room_no=room_no).save()
 
 
 def add_Teams():

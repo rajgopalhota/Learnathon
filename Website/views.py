@@ -267,10 +267,12 @@ def postmarks(request, session_no, room_no, team_name):
     team = Team.objects.get(team_name=team_name)
     b=True
     a = Student.objects.filter(team=team)
+    absent=[]
     for i in a:
         qw=Attendence.objects.get(room=r,student=i,session=session) 
+        
         if qw.status == False or not qw:
-            b=False
+            absent.append(i)
             break
     rbs=Rubrics.objects.get(review_no=session_no)
     context = {}
@@ -279,6 +281,11 @@ def postmarks(request, session_no, room_no, team_name):
     # c=Attendence.objects.filter(room=r,status=True)
     if request.method == 'POST':
         for i in a:
+            if i in absent:
+                b=True
+            else:
+                b=False
+
             review_marks = request.POST["id_"+str(i.id)] if b ==True else 0
             review_remarks=request.POST["remarks_"+str(i.id)] if b==True else "You are absent to session"+session_no
             if Review.objects.filter(student=i, session=session, review_no=session_no, room=r).exists():
@@ -415,3 +422,45 @@ def add_rooms(request):
     except:
         messages.error(request,"csv not found")
         return redirect('home')
+
+
+# # data entry
+# def add_stu(request):
+#     try:
+#         if request.user.is_superuser:
+#             with open('static/csvs/smap.csv', 'r') as csv_file:
+#                 csv_reader = csv.reader(csv_file)
+#                 for row in csv_reader:
+#                     print(row)
+#                     team_name = str(row[2]) + "-" + str(row[0])
+#                     print(team_name)
+                    
+#                     room = Room.objects.get(room_no=str(row[1]))
+#                     print(room)
+                    
+#                     a = Team.objects.create(room=room, team_name=team_name)
+#                     print(a)
+                    
+#                     s1 = User.objects.filter(username=row[2]).first()
+#                     print(s1)
+                    
+#                     s2 = User.objects.filter(username=row[3]).first()
+#                     print(s2)
+                    
+#                     s3 = None
+#                     if row[4]!='\xa0':
+#                         s3 = User.objects.filter(username=row[4]).first()
+#                         print(s3)
+                    
+#                     if s1:
+#                         Student.objects.create(user=s1, id=int(row[2]), name=str(row[2]), team=a, room=room).save()
+#                     if s2:
+#                         Student.objects.create(user=s2, id=int(row[3]), name=str(row[3]), team=a, room=room).save()
+#                     if s3:
+#                         Student.objects.create(user=s3, id=int(row[4]), name=str(row[4]), team=a, room=room).save()
+
+#     except Exception as e:
+#         print("An error occurred:", str(e))
+
+
+#     return HttpResponse("hurray")

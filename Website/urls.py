@@ -27,5 +27,6 @@ urlpatterns = [
     path('addstu',views.add_users,name="addstu"),
     path('addfac',views.add_faculty,name="addfac"),
     path('addroom',views.add_rooms,name="addroom"),
+    # path('map_stu',views.add_stu,name="map_stu"),
 
 ]
