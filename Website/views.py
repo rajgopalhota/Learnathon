@@ -281,9 +281,9 @@ def postmarks(request, session_no, room_no, team_name):
     if request.method == 'POST':
         for i in a:
             if i in absent:
-                b=True
-            else:
                 b=False
+            else:
+                b=True
 
             review_marks = request.POST["id_"+str(i.id)] if b ==True else 0
             review_remarks=request.POST["remarks_"+str(i.id)] if b==True else "You are absent to session"+session_no
