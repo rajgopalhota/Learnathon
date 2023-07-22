@@ -273,7 +273,6 @@ def postmarks(request, session_no, room_no, team_name):
         
         if qw.status == False or not qw:
             absent.append(i)
-            break
     rbs=Rubrics.objects.get(review_no=session_no)
     context = {}
     context['rubrics']=rbs.review_rubrics
