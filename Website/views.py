@@ -423,43 +423,87 @@ def add_rooms(request):
         return redirect('home')
 
 
-# # data entry
-# def add_stu(request):
-#     try:
-#         if request.user.is_superuser:
-#             with open('static/csvs/smap.csv', 'r') as csv_file:
-#                 csv_reader = csv.reader(csv_file)
-#                 for row in csv_reader:
-#                     print(row)
-#                     team_name = str(row[2]) + "-" + str(row[0])
-#                     print(team_name)
+# data entry
+def add_stu(request):
+    try:
+        if request.user.is_superuser:
+            with open('static/csvs/smap1.csv', 'r') as csv_file:
+                csv_reader = csv.reader(csv_file)
+                for row in csv_reader:
+                    print(row)
+                    team_name = str(row[2]) + "-" + str(row[0])
+                    print(team_name)
                     
-#                     room = Room.objects.get(room_no=str(row[1]))
-#                     print(room)
+                    room = Room.objects.get(room_no=str(row[1]))
+                    print(room)
                     
-#                     a = Team.objects.create(room=room, team_name=team_name)
-#                     print(a)
+                    a = Team.objects.create(room=room, team_name=team_name)
+                    print(a)
                     
-#                     s1 = User.objects.filter(username=row[2]).first()
-#                     print(s1)
+                    s1 = User.objects.filter(username=row[2]).first()
+                    print(s1)
                     
-#                     s2 = User.objects.filter(username=row[3]).first()
-#                     print(s2)
+                    s2 = User.objects.filter(username=row[3]).first()
+                    print(s2)
                     
-#                     s3 = None
-#                     if row[4]!='\xa0':
-#                         s3 = User.objects.filter(username=row[4]).first()
-#                         print(s3)
+                    s3 = None
+                    if row[4]!='\xa0':
+                        s3 = User.objects.filter(username=row[4]).first()
+                        print(s3)
                     
-#                     if s1:
-#                         Student.objects.create(user=s1, id=int(row[2]), name=str(row[2]), team=a, room=room).save()
-#                     if s2:
-#                         Student.objects.create(user=s2, id=int(row[3]), name=str(row[3]), team=a, room=room).save()
-#                     if s3:
-#                         Student.objects.create(user=s3, id=int(row[4]), name=str(row[4]), team=a, room=room).save()
+                    if s1:
+                        Student.objects.create(user=s1, id=int(row[2]), name=str(row[2]), team=a, room=room).save()
+                    if s2:
+                        Student.objects.create(user=s2, id=int(row[3]), name=str(row[3]), team=a, room=room).save()
+                    if s3:
+                        Student.objects.create(user=s3, id=int(row[4]), name=str(row[4]), team=a, room=room).save()
 
-#     except Exception as e:
-#         print("An error occurred:", str(e))
+    except Exception as e:
+        print("An error occurred:", str(e))
 
 
-#     return HttpResponse("hurray")
+    return HttpResponse("hurray")
+
+
+def give_report(request):
+    with open('static/csvs/stu_all.csv', 'r') as csv_file:
+        csv_reader = csv.reader(csv_file)
+        qw=[]
+        for row in csv_reader:
+            a=[]
+            ss=Student.objects.get(id=int(row[0]))
+            if ss!=None:
+                a.append(ss.room)
+                a.append(ss.id)
+                rr=0
+                for i in Session.objects.all():
+                    aten=Attendence.objects.get(student=ss,session=i)
+                    if aten==None:
+                        a.append("Not")
+                    else:
+                        a.append(aten.status)
+
+                
+                    rr=Review.objects.filter(student=ss,session=i,review_no=i.session_no)
+                
+                    if rr.count()==0:
+                        a.append("Not")
+                    else:
+                        a.append(rr.first().review_marks)
+                qw.append(a)
+            else:
+                qw.append('','','','','','')
+    fields=["room_no","id","r1_att","r1_score","r2_att","r2_score"]
+    with open("static/csvs/file1.csv", 'w') as csvfile:
+        csvwriter = csv.writer(csvfile) 
+        csvwriter.writerow(fields)
+        csvwriter.writerows(c)
+
+
+def abcd(request):
+    ss=Student.objects.all()
+    c=[]
+    for i in ss:
+        a=[]
+        a.append(i.id)
+        s=Session.objects.filter(session_no=1)
